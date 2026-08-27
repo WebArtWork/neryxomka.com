@@ -1,3 +1,57 @@
+### Development setup
+
+**Prerequisites:** Node `^22.22.3`, `^24.15.0`, or `>=26.0.0` with npm 8+
+(Angular CLI 22 is provided locally via devDependencies).
+
+```sh
+npm install   # install dependencies
+npm start     # serve on http://localhost:4200, talking directly to it.webart.work
+```
+
+Environments live in `src/environments/`:
+
+- `environment.ts` for local development (extends `environment.prod.ts`)
+- `environment.prod.ts` for production builds (API URL, meta tags, languages, defaults)
+
+**Scripts:**
+
+- `npm start` — dev server, talking directly to the API URL configured in `src/environments/environment.ts`
+- `npm run build` — production app build to `dist/`
+- `npm run build:ngx-bos` — build the `@wawjs/ngx-bos` package with ng-packagr
+- `npm run start:uikit` / `npm run build:uikit` — serve/build `projects/uikit`
+- `npm run start:showcase` / `npm run build:showcase` — serve/build `projects/showcase`
+- `npm run start:translator` / `npm run build:translator` — serve/build `projects/translator`
+
+Each of `uikit`, `showcase`, and `translator` is also directly reachable via the
+Angular CLI itself if you'd rather not go through the npm script aliases, e.g.
+`ng serve uikit` or `ng build translator`.
+
+**Project structure (key paths):**
+
+- `src/app/app.config.ts` — root providers (zoneless change detection, `ngxBosProvide`, WAW services, TinyMCE, router)
+- `src/app/app.routes.ts` — route map for guest, user, and admin areas
+- `src/app/app.formcomponents.ts` — project-specific dynamic form components
+- `src/app/layouts/` — layout shells for guest/user routes
+- `src/app/pages/` — routed pages per role (e.g. `guest/sign`, `user/profile`)
+- `src/environments/` — API / meta / language configuration
+- `src/i18n/en.json` / `src/i18n/ua.json` — interface translations (served at `/i18n`), read by `@wawjs/ngx-translate`. Each file is an array of strings, one per language, positionally aligned — `en.json[i]` is both the English source text and the lookup key used everywhere in `src/app` (e.g. `translateService.translate('Settings')`), and `ua.json[i]` is its translation. `projects/translator` is the tool for browsing/editing these.
+- `projects/ngx-bos/` — the reusable `@wawjs/ngx-bos` package (users/auth, file upload, form adapters, guards, selectors, pages, and routes). See [projects/ngx-bos/README.md](projects/ngx-bos/README.md).
+- `projects/uikit/` — ngx-prime component reference (a demo page per component, across Form/Data/Button/Overlay/Navigation/Feedback/Layout/Media/Misc) plus composite "in-context" pages showing several components assembled together. Its `/design-lab` route is a live theme configurator. See [projects/uikit/ROADMAP.md](projects/uikit/ROADMAP.md).
+- `projects/showcase/` — a fuller example app built from real ngx-prime components with concrete demo data.
+- `projects/translator/` — browses `src/i18n/en.json`/`ua.json` in a table and downloads an updated JSON per language to drop back over the real file.
+- `projects/ROADMAP.md` / `projects/uikit/ROADMAP.md` — status and design notes for the three supporting apps above.
+
+**Component class member order:**
+
+1. Injections (via `inject()`)
+2. Inputs / outputs / view queries
+3. Variables (readonly/public first, then private)
+4. Constructor (only when needed)
+5. Lifecycle hooks (`ngOnInit`, `ngOnDestroy`, etc.)
+6. Functions (public, then private)
+
+Private variables and functions start with an underscore (`_`).
+
 ### Contributing rules
 
 - Use **Conventional Commits**: `type(scope): subject`
