@@ -14,6 +14,8 @@ export const routes: Routes = [
 		data: {
 			meta: {
 				title: 'Neryxomka — цифровий паспорт нерухомості',
+				description:
+					'Neryxomka показує повну історію об’єкта нерухомості — ремонти, обслуговування, комунікації — поруч з оголошеннями, картою та профілями агентств.',
 			},
 		},
 		loadChildren: () =>
@@ -33,6 +35,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Вхід',
+						description:
+							'Увійдіть або зареєструйтесь у Neryxomka, щоб переглядати цифрові паспорти об’єктів, стрічку пропозицій і керувати профілем.',
 					},
 				},
 				loadChildren: () =>
@@ -56,6 +60,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Мій профіль',
+						description:
+							'Керуйте особистими даними профілю Neryxomka: ім’я, телефон, фото та коротка інформація про себе.',
 					},
 				},
 				loadChildren: () =>
@@ -69,6 +75,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Мої налаштування',
+						description: 'Налаштування облікового запису Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>
@@ -82,6 +90,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Стрічка',
+						description:
+							'Перегортайте стрічку об’єктів нерухомості Neryxomka — відкладайте цікаве в обране, пропускайте зайве.',
 					},
 				},
 				loadChildren: () =>
@@ -95,6 +105,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Пошук',
+						description:
+							'Шукайте й фільтруйте оголошення нерухомості Neryxomka за типом, ціною, статусом і розташуванням.',
 					},
 				},
 				loadChildren: () =>
@@ -108,6 +120,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Карта',
+						description:
+							'Знаходьте об’єкти нерухомості на карті Neryxomka за їхнім реальним розташуванням.',
 					},
 				},
 				loadChildren: () =>
@@ -121,6 +135,9 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Редактор',
+						description:
+							'Перевірте форми додавання об’єктів, оголошень, комплексів, агентств та агентів у Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>
@@ -134,6 +151,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Об’єкт нерухомості',
+						description:
+							'Цифровий паспорт об’єкта нерухомості: характеристики, повна історія ремонтів і обслуговування, пов’язані оголошення.',
 					},
 				},
 				loadChildren: () =>
@@ -147,6 +166,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Оголошення',
+						description:
+							'Деталі оголошення про продаж або оренду нерухомості в Neryxomka.',
 					},
 				},
 				loadChildren: () =>
@@ -160,6 +181,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Запис історії об’єкта',
+						description:
+							'Запис з цифрового паспорта об’єкта: ремонт, заміна комунікацій або обслуговування.',
 					},
 				},
 				loadChildren: () =>
@@ -173,6 +196,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Житловий комплекс',
+						description:
+							'Житловий комплекс у Neryxomka: об’єкти, забудовник і деталі проєкту.',
 					},
 				},
 				loadChildren: () =>
@@ -186,6 +211,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Забудовник',
+						description:
+							'Профіль забудовника в Neryxomka: реалізовані комплекси та об’єкти.',
 					},
 				},
 				loadChildren: () =>
@@ -199,6 +226,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Агентство',
+						description:
+							'Профіль агентства нерухомості в Neryxomka: агенти, об’єкти й оголошення.',
 					},
 				},
 				loadChildren: () =>
@@ -212,6 +241,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Агент',
+						description:
+							'Профіль агента нерухомості в Neryxomka: контакти, агентство та об’єкти в роботі.',
 					},
 				},
 				loadChildren: () =>
@@ -225,6 +256,7 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Профіль користувача',
+						description: 'Публічний профіль користувача Neryxomka.',
 					},
 				},
 				loadChildren: () =>
@@ -248,6 +280,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Користувачі',
+						description: 'Адміністрування користувачів Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>
@@ -259,6 +293,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Клієнти',
+						description: 'Адміністрування клієнтів Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>
@@ -270,6 +306,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Форми',
+						description: 'Адміністрування динамічних форм Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>
@@ -281,6 +319,8 @@ export const routes: Routes = [
 				data: {
 					meta: {
 						title: 'Форми',
+						description: 'Редагування динамічної форми Neryxomka.',
+						index: false,
 					},
 				},
 				loadChildren: () =>

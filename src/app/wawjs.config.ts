@@ -211,7 +211,9 @@ export const wawjsConfig = {
 			favicon: companyProfile.favicon,
 			description: companyProfile.description,
 			titleSuffix: ' | ' + companyProfile.title,
-			'og:image': companyProfile.image,
+			// og:image/twitter:image need an absolute URL for crawlers, unlike the
+			// relative path companyProfile.image uses for in-app <img> tags.
+			image: companyProfile.siteUrl + companyProfile.image,
 		},
 	},
 };
