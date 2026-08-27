@@ -1,10 +1,20 @@
 @reference 'tailwindcss';
 
 .feed {
-	@apply fixed inset-x-0 bottom-14 top-[var(--topbar-h)] z-10 overflow-hidden bg-black;
+	/*
+	 * .user__main (the parent) is already correctly sized/positioned to exclude
+	 * the topbar, mobile bottom nav, and — critically — the sidebar's grid
+	 * column on desktop (see user.component.scss's `grid-template-columns: 1fr
+	 * var(--drawer-w)`). Position: fixed against the viewport ignored all of
+	 * that and let the feed render underneath/behind the sidebar. Absolute +
+	 * negative margin (canceling .user__main's own padding) keeps the same
+	 * full-bleed look while staying confined to that parent's content area.
+	 */
+	@apply absolute inset-0 z-10 overflow-hidden bg-black;
+	margin: calc(-1 * var(--sp-4));
 
 	@media (min-width: 768px) {
-		bottom: 0;
+		margin: calc(-1 * var(--sp-5));
 	}
 }
 
