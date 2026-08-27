@@ -5,9 +5,16 @@ import {
 	input,
 	output,
 } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import {
+	ActivatedRoute,
+	NavigationEnd,
+	Router,
+	RouterLink,
+} from '@angular/router';
 import { CoreService } from '@wawjs/ngx-core';
 import { TranslateService } from '@wawjs/ngx-translate';
+import { filter, map, startWith } from 'rxjs';
 import { companyProfile } from '../../company/company.data';
 import { NavIconComponent } from '../../shared/nav-icon/nav-icon.component';
 import { SidebarService } from '../sidebar/sidebar.service';
@@ -30,6 +37,8 @@ const BURGER_ICONS: Record<BurgerState, string> = {
 export class TopbarComponent {
 	private readonly _coreService = inject(CoreService);
 	private readonly _sidebarService = inject(SidebarService);
+	private readonly _router = inject(Router);
+	private readonly _route = inject(ActivatedRoute);
 	readonly translateService = inject(TranslateService);
 
 	readonly company = companyProfile;
@@ -39,6 +48,16 @@ export class TopbarComponent {
 	readonly sidebarOpen = output<boolean>();
 	readonly showProfile = input(false);
 	readonly viewport = this._coreService.viewport;
+
+	/** Title of the deepest activated route, read from `data.meta.title` (used for the mobile header). */
+	readonly pageTitle = toSignal(
+		this._router.events.pipe(
+			filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+			map(() => this._readDeepestRouteTitle()),
+			startWith(this._readDeepestRouteTitle()),
+		),
+		{ initialValue: '' },
+	);
 
 	readonly burgerState = computed<BurgerState>(() => {
 		if (this._sidebarService.isMobile()) {
@@ -77,5 +96,13 @@ export class TopbarComponent {
 				this._onBurgerHover = null;
 			}, 2000);
 		}
+	}
+
+	/** Walks to the deepest activated route snapshot and reads its `meta.title`. */
+	private _readDeepestRouteTitle(): string {
+		let route = this._route.root;
+		while (route.firstChild) route = route.firstChild;
+
+		return route.snapshot.data['meta']?.title ?? '';
 	}
 }

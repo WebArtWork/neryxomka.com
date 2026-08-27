@@ -1,11 +1,11 @@
 <nav
-	class="sticky top-0 z-[100] flex min-h-14 items-center bg-[var(--c-bg-secondary)] shadow px-5 max-md:fixed max-md:bottom-0 max-md:top-auto max-md:w-full max-md:px-3"
+	class="sticky top-0 z-[100] flex min-h-14 items-center bg-[var(--c-bg-secondary)] shadow px-5 max-md:fixed max-md:top-0 max-md:w-full max-md:px-3"
 >
 	<ul
 		class="m-0 flex w-full list-none items-center gap-2 p-0 max-md:justify-between max-md:gap-0"
 	>
 		<li
-			class="inline-flex items-center gap-2 max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center gap-2 max-md:flex-none"
 		>
 			<a
 				routerLink="/"
@@ -22,6 +22,7 @@
 			</a>
 
 			<app-nav-icon
+				class="max-md:hidden"
 				[routerLink]="sidebarToggler() ? '/explore' : '/'"
 				[name]="viewport() === 'mobile' ? '' : sidebarToggler() ? translateService.translate('Explore')() : ''"
 				[icon]="sidebarToggler() ? 'th-large' : 'home'"
@@ -29,7 +30,13 @@
 		</li>
 
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="hidden max-md:inline-flex max-md:min-w-0 max-md:flex-1 max-md:items-center"
+		>
+			<span class="truncate text-base font-semibold">{{ pageTitle() }}</span>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon
 				routerLink="/properties"
@@ -40,7 +47,7 @@
 		</li>
 
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon
 				routerLink="/agencies"
@@ -51,7 +58,7 @@
 		</li>
 
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon
 				routerLink="/developers"
@@ -62,7 +69,7 @@
 		</li>
 
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon
 				routerLink="/feed"
@@ -91,7 +98,7 @@
 		</li>
 		} @if (showProfile()) {
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center max-md:hidden"
 		>
 			<app-nav-icon icon="user" routerLink="/profile" />
 		</li>
