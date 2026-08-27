@@ -1,0 +1,22 @@
+<article class="card">
+	@if (entity.logo) {
+		<img class="card__photo" style="width:96px;height:96px" [src]="entity.logo" alt="" />
+	}
+
+	<h2 class="card__title">{{ entity.name }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">founded {{ entity.foundedYear }}</span>
+		<span class="card__badge">★ {{ entity.averageRating }} ({{ entity.reviewCount }})</span>
+	</div>
+
+	<p>{{ entity.description }}</p>
+
+		<div class="card__row"><dt>Location</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
+		<div class="card__row"><dt>Phone</dt><dd>{{ entity.contact.phone }}</dd></div>
+		<div class="card__row"><dt>Email</dt><dd>{{ entity.contact.email }}</dd></div>
+		<div class="card__row"><dt>Website</dt><dd>{{ entity.contact.website }}</dd></div>
+		<div class="card__row"><dt>Address</dt><dd>{{ entity.contact.address }}</dd></div>
+		<div class="card__row"><dt>Agents</dt><dd>{{ entity.agentIds.length }}</dd></div>
+		<div class="card__row"><dt>Listings</dt><dd>{{ entity.listingIds.length }}</dd></div>
+</article>

@@ -1,0 +1,11 @@
+<article class="short">
+	@if (entity.photos.length) {
+		<img class="short__thumb" [src]="entity.photos[0]" alt="" />
+	}
+
+	<div class="short__body">
+		<h3 class="short__title">{{ entity.type }} · {{ entity.city }}</h3>
+		<span class="short__meta">{{ entity.address }}</span>
+		<span class="short__price">{{ entity.status }} · {{ entity.characteristics.sizeSqm }} m²</span>
+	</div>
+</article>

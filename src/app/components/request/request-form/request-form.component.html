@@ -1,0 +1,106 @@
+<form class="form" [formGroup]="form">
+		<div class="form__field">
+			<label class="form__label" for="transactionType">Transaction type</label>
+			<select id="transactionType" class="form__control" [formControlName]="'transactionType'">
+				<option value="buy">buy</option>
+				<option value="rent">rent</option>
+				<option value="lease">lease</option>
+				<option value="find">find</option>
+			</select>
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="country">Country</label>
+			<input id="country" class="form__control" type="text" [formControlName]="'country'" [class._invalid]="form.get('country')?.invalid && form.get('country')?.touched" />
+			@if (form.get('country')?.hasError('required') && form.get('country')?.touched) {
+				<span class="form__error">Country is required</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="region">Region</label>
+			<input id="region" class="form__control" type="text" [formControlName]="'region'" [class._invalid]="form.get('region')?.invalid && form.get('region')?.touched" />
+			@if (form.get('region')?.hasError('required') && form.get('region')?.touched) {
+				<span class="form__error">Region is required</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="city">City</label>
+			<input id="city" class="form__control" type="text" [formControlName]="'city'" [class._invalid]="form.get('city')?.invalid && form.get('city')?.touched" />
+			@if (form.get('city')?.hasError('required') && form.get('city')?.touched) {
+				<span class="form__error">City is required</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="minPrice">Min price</label>
+			<input id="minPrice" class="form__control" type="number" [formControlName]="'minPrice'" [class._invalid]="form.get('minPrice')?.invalid && form.get('minPrice')?.touched" />
+			@if (form.get('minPrice')?.hasError('required') && form.get('minPrice')?.touched) {
+				<span class="form__error">Required</span>
+			}
+			@if (form.get('minPrice')?.hasError('min') && form.get('minPrice')?.touched) {
+				<span class="form__error">Must be 0 or more</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="maxPrice">Max price</label>
+			<input id="maxPrice" class="form__control" type="number" [formControlName]="'maxPrice'" [class._invalid]="form.get('maxPrice')?.invalid && form.get('maxPrice')?.touched" />
+			@if (form.get('maxPrice')?.hasError('required') && form.get('maxPrice')?.touched) {
+				<span class="form__error">Required</span>
+			}
+			@if (form.get('maxPrice')?.hasError('min') && form.get('maxPrice')?.touched) {
+				<span class="form__error">Must be 0 or more</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="currency">Currency</label>
+			<input id="currency" class="form__control" type="text" [formControlName]="'currency'" [class._invalid]="form.get('currency')?.invalid && form.get('currency')?.touched" />
+			@if (form.get('currency')?.hasError('required') && form.get('currency')?.touched) {
+				<span class="form__error">Currency is required</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="preferredSizeSqm">Preferred size (m²)</label>
+			<input id="preferredSizeSqm" class="form__control" type="number" [formControlName]="'preferredSizeSqm'" [class._invalid]="form.get('preferredSizeSqm')?.invalid && form.get('preferredSizeSqm')?.touched" />
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="roomRequirements">Room requirements</label>
+			<input id="roomRequirements" class="form__control" type="number" [formControlName]="'roomRequirements'" [class._invalid]="form.get('roomRequirements')?.invalid && form.get('roomRequirements')?.touched" />
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="conditionRequirements">Condition requirements</label>
+			<input id="conditionRequirements" class="form__control" type="text" [formControlName]="'conditionRequirements'" [class._invalid]="form.get('conditionRequirements')?.invalid && form.get('conditionRequirements')?.touched" />
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="constructionPreferences">Construction preferences</label>
+			<input id="constructionPreferences" class="form__control" type="text" [formControlName]="'constructionPreferences'" [class._invalid]="form.get('constructionPreferences')?.invalid && form.get('constructionPreferences')?.touched" />
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="preferredMoveDate">Preferred move date</label>
+			<input id="preferredMoveDate" class="form__control" type="date" [formControlName]="'preferredMoveDate'" [class._invalid]="form.get('preferredMoveDate')?.invalid && form.get('preferredMoveDate')?.touched" />
+
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="expirationDate">Expiration date</label>
+			<input id="expirationDate" class="form__control" type="date" [formControlName]="'expirationDate'" [class._invalid]="form.get('expirationDate')?.invalid && form.get('expirationDate')?.touched" />
+			@if (form.get('expirationDate')?.hasError('required') && form.get('expirationDate')?.touched) {
+				<span class="form__error">Date is required</span>
+			}
+		</div>
+		<div class="form__field">
+			<label class="form__label" for="visibility">Visibility</label>
+			<select id="visibility" class="form__control" [formControlName]="'visibility'">
+				<option value="public">public</option>
+				<option value="private">private</option>
+				<option value="shared-with-selected-agents">shared-with-selected-agents</option>
+				<option value="shared-with-agencies">shared-with-agencies</option>
+			</select>
+
+		</div>
+
+	<div class="form__actions">
+		<button type="button" class="form__submit" [disabled]="form.invalid">Save</button>
+	</div>
+</form>

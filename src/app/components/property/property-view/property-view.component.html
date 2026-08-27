@@ -1,0 +1,51 @@
+<article class="card">
+	<h2 class="card__title">{{ entity.type }} · {{ entity.city }}, {{ entity.country }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">{{ entity.status }}</span>
+		<span class="card__badge">{{ entity.visibility }}</span>
+	</div>
+
+	@if (entity.photos.length) {
+		<div class="card__photos">
+			@for (photo of entity.photos; track photo) {
+				<img class="card__photo" [src]="photo" alt="" />
+			}
+		</div>
+	}
+
+		<div class="card__row"><dt>Address</dt><dd>{{ entity.address }}</dd></div>
+		<div class="card__row"><dt>Building / unit</dt><dd>{{ entity.buildingUnitInfo }}</dd></div>
+		<div class="card__row"><dt>Cadastral ID</dt><dd>{{ entity.cadastralId }}</dd></div>
+		<div class="card__row"><dt>Coordinates</dt><dd>{{ entity.coordinates.lat }}, {{ entity.coordinates.lng }}</dd></div>
+		<div class="card__row"><dt>Size</dt><dd>{{ entity.characteristics.sizeSqm }} m²</dd></div>
+		<div class="card__row"><dt>Rooms</dt><dd>{{ entity.characteristics.rooms }}</dd></div>
+		<div class="card__row"><dt>Bedrooms</dt><dd>{{ entity.characteristics.bedrooms }}</dd></div>
+		<div class="card__row"><dt>Bathrooms</dt><dd>{{ entity.characteristics.bathrooms }}</dd></div>
+		@if (entity.characteristics.floor !== null) {
+			<div class="card__row"><dt>Floor</dt><dd>{{ entity.characteristics.floor }} / {{ entity.characteristics.totalFloors }}</dd></div>
+		}
+		@if (entity.characteristics.yearBuilt !== null) {
+			<div class="card__row"><dt>Year built</dt><dd>{{ entity.characteristics.yearBuilt }}</dd></div>
+		}
+		@if (entity.complexId) {
+			<div class="card__row"><dt>Complex</dt><dd>{{ entity.complexId }}</dd></div>
+		}
+		@if (entity.developerId) {
+			<div class="card__row"><dt>Developer</dt><dd>{{ entity.developerId }}</dd></div>
+		}
+		@if (entity.agencyId) {
+			<div class="card__row"><dt>Agency</dt><dd>{{ entity.agencyId }}</dd></div>
+		}
+		@if (entity.agentId) {
+			<div class="card__row"><dt>Agent</dt><dd>{{ entity.agentId }}</dd></div>
+		}
+
+	@if (entity.access.length) {
+		<div class="card__meta">
+			@for (a of entity.access; track a.userId) {
+				<span class="card__badge">{{ a.role }}: {{ a.userId }}</span>
+			}
+		</div>
+	}
+</article>

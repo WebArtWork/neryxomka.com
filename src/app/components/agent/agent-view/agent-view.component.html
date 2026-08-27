@@ -1,0 +1,37 @@
+<article class="card">
+	@if (entity.photo) {
+		<img class="card__photo" style="width:96px;height:96px;border-radius:50%" [src]="entity.photo" alt="" />
+	}
+
+	<h2 class="card__title">{{ entity.displayName }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">★ {{ entity.averageRating }} ({{ entity.reviewCount }})</span>
+		<span class="card__badge">{{ entity.yearsExperience }} yrs experience</span>
+	</div>
+
+	<p>{{ entity.bio }}</p>
+
+		<div class="card__row"><dt>Location</dt><dd>{{ entity.city }}, {{ entity.country }}</dd></div>
+		<div class="card__row"><dt>Phone</dt><dd>{{ entity.contactPhone }}</dd></div>
+		<div class="card__row"><dt>Email</dt><dd>{{ entity.contactEmail }}</dd></div>
+		@if (entity.agencyId) {
+			<div class="card__row"><dt>Agency</dt><dd>{{ entity.agencyId }}</dd></div>
+		}
+
+	@if (entity.specializations.length) {
+		<div class="card__meta">
+			@for (s of entity.specializations; track s) {
+				<span class="card__badge">{{ s }}</span>
+			}
+		</div>
+	}
+
+	@if (entity.serviceAreas.length) {
+		<div class="card__meta">
+			@for (a of entity.serviceAreas; track a) {
+				<span class="card__badge">{{ a }}</span>
+			}
+		</div>
+	}
+</article>

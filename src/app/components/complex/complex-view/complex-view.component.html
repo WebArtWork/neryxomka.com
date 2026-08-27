@@ -1,0 +1,34 @@
+<article class="card">
+	@if (entity.coverImage) {
+		<img class="card__photo" style="width:100%;height:auto" [src]="entity.coverImage" alt="" />
+	}
+
+	<h2 class="card__title">{{ entity.name }}</h2>
+
+	<div class="card__meta">
+		<span class="card__badge">{{ entity.status }}</span>
+		<span class="card__badge">{{ entity.constructionProgressPercent }}% complete</span>
+	</div>
+
+	<p>{{ entity.description }}</p>
+
+		<div class="card__row"><dt>Location</dt><dd>{{ entity.address }}, {{ entity.city }}, {{ entity.country }}</dd></div>
+		<div class="card__row"><dt>Coordinates</dt><dd>{{ entity.coordinates.lat }}, {{ entity.coordinates.lng }}</dd></div>
+		<div class="card__row"><dt>Developer</dt><dd>{{ entity.developerId }}</dd></div>
+
+	@if (entity.buildings.length) {
+		<div class="card__meta">
+			@for (b of entity.buildings; track b.name) {
+				<span class="card__badge">{{ b.name }}: {{ b.floors }}fl / {{ b.unitsCount }}u</span>
+			}
+		</div>
+	}
+
+	@if (entity.sharedFacilities.length) {
+		<div class="card__meta">
+			@for (f of entity.sharedFacilities; track f) {
+				<span class="card__badge">{{ f }}</span>
+			}
+		</div>
+	}
+</article>
