@@ -5,26 +5,28 @@ import { adminsGuard, authenticatedGuard, guestGuard } from '@wawjs/ngx-bos';
 export const routes: Routes = [
 	{
 		path: '',
+		pathMatch: 'full',
+		canActivate: [MetaGuard],
+		loadComponent: () =>
+			import('./layouts/guest/guest.component').then(
+				(m) => m.GuestComponent,
+			),
+		data: {
+			meta: {
+				title: 'Neryxomka — цифровий паспорт нерухомості',
+			},
+		},
+		loadChildren: () =>
+			import('./pages/guest/home/home.routes').then((m) => m.routes),
+	},
+	{
+		path: '',
 		canActivate: [guestGuard],
 		loadComponent: () =>
 			import('./layouts/guest/guest.component').then(
 				(m) => m.GuestComponent,
 			),
 		children: [
-			{
-				path: '',
-				pathMatch: 'full',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Neryxomka — цифровий паспорт нерухомості',
-					},
-				},
-				loadChildren: () =>
-					import('./pages/guest/home/home.routes').then(
-						(m) => m.routes,
-					),
-			},
 			{
 				path: 'sign',
 				canActivate: [MetaGuard],
