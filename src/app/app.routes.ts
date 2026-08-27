@@ -78,6 +78,110 @@ export const routes: Routes = [
 						(m) => m.routes,
 					),
 			},
+			{
+				path: 'property/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Об’єкт нерухомості',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/property/property.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'listing/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Оголошення',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/listing/listing.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'records/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Запис історії об’єкта',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/records/records.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'complex/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Житловий комплекс',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/complex/complex.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'developer/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Забудовник',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/developer/developer.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'agency/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Агентство',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/agency/agency.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'agent/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Агент',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/agent/agent.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'client/:id',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Профіль користувача',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/client/client.routes').then(
+						(m) => m.routes,
+					),
+			},
 		],
 	},
 	{

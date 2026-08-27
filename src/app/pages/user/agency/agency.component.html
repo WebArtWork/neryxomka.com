@@ -1,0 +1,11 @@
+<section class="agency">
+	<p-breadcrumb [model]="breadcrumb" [home]="home" class="agency__breadcrumb" />
+
+	@if (entity(); as item) {
+	<app-agency-view [entity]="item" />
+	} @else {
+	<p-card class="agency__not-found">
+		<p>Агентство не знайдено.</p>
+	</p-card>
+	}
+</section>

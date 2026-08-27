@@ -1,0 +1,11 @@
+<section class="property">
+	<p-breadcrumb [model]="breadcrumb" [home]="home" class="property__breadcrumb" />
+
+	@if (entity(); as item) {
+	<app-property-view [entity]="item" />
+	} @else {
+	<p-card class="property__not-found">
+		<p>Об'єкт нерухомості не знайдено.</p>
+	</p-card>
+	}
+</section>

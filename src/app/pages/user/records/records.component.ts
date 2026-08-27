@@ -1,0 +1,31 @@
+import { Component, computed, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
+import { MenuItem } from '@wawjs/ngx-prime/api';
+import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
+import { CardModule } from '@wawjs/ngx-prime/card';
+import { RecordViewComponent } from '../../../components/record/record-view/record-view.component';
+import { PropertyRecord } from '../../../record/record.interface';
+import { records } from '../../../record/record.data';
+
+@Component({
+	imports: [RecordViewComponent, BreadcrumbModule, CardModule],
+	templateUrl: './records.component.html',
+	styleUrl: './records.component.scss',
+})
+export class RecordsComponent {
+	private readonly _route = inject(ActivatedRoute);
+
+	private readonly _id = toSignal(
+		this._route.paramMap.pipe(map((params) => params.get('id'))),
+		{ initialValue: null },
+	);
+
+	readonly entity = computed<PropertyRecord | undefined>(() =>
+		records.find((item) => item._id === this._id()),
+	);
+
+	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/dashboard' };
+	readonly breadcrumb: MenuItem[] = [{ label: 'Запис історії' }];
+}

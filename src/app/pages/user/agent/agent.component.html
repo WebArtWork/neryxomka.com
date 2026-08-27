@@ -1,0 +1,11 @@
+<section class="agent">
+	<p-breadcrumb [model]="breadcrumb" [home]="home" class="agent__breadcrumb" />
+
+	@if (entity(); as item) {
+	<app-agent-view [entity]="item" />
+	} @else {
+	<p-card class="agent__not-found">
+		<p>Агента не знайдено.</p>
+	</p-card>
+	}
+</section>

@@ -1,0 +1,11 @@
+<section class="listing">
+	<p-breadcrumb [model]="breadcrumb" [home]="home" class="listing__breadcrumb" />
+
+	@if (entity(); as item) {
+	<app-listing-view [entity]="item" />
+	} @else {
+	<p-card class="listing__not-found">
+		<p>Оголошення не знайдено.</p>
+	</p-card>
+	}
+</section>

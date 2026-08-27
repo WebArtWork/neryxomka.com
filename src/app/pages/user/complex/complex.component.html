@@ -1,0 +1,11 @@
+<section class="complex">
+	<p-breadcrumb [model]="breadcrumb" [home]="home" class="complex__breadcrumb" />
+
+	@if (entity(); as item) {
+	<app-complex-view [entity]="item" />
+	} @else {
+	<p-card class="complex__not-found">
+		<p>Житловий комплекс не знайдено.</p>
+	</p-card>
+	}
+</section>

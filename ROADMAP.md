@@ -18,31 +18,31 @@ in components.
 
 ### Entities (static JSON data, realistic content)
 
-- [ ] `property` — a few properties across different types (apartment,
+- [x] `property` — a few properties across different types (apartment,
       house, land, etc.)
-- [ ] `listing` — sale + rental listings tied to those properties
-- [ ] `record` — property history entries (renovation, repair, utility) —
+- [x] `listing` — sale + rental listings tied to those properties
+- [x] `record` — property history entries (renovation, repair, utility) —
       this is the "digital passport" differentiator
-- [ ] `complex` — a few developments
-- [ ] `developer` — a few developer profiles
-- [ ] `agency` — a few agencies
-- [ ] `agent` — a few agents, linked to agencies
-- [ ] `request` — a few buyer/tenant requests
-- [ ] `user` — public profile view
-- [ ] `comment` — comments/reviews on a few entities
+- [x] `complex` — a few developments
+- [x] `developer` — a few developer profiles
+- [x] `agency` — a few agencies
+- [x] `agent` — a few agents, linked to agencies
+- [x] `request` — a few buyer/tenant requests
+- [x] `user` — public profile view
+- [x] `comment` — comments/reviews on a few entities
 
 ### Components per entity (`*-view`, `*-short`, `*-icon`, `*-form`)
 
-- [ ] property: view, short, icon, form
-- [ ] listing: view, short, icon, form
-- [ ] record: view, short, form (no icon per README)
-- [ ] complex: view, short, icon, form
-- [ ] developer: view, short, icon, form
-- [ ] agency: view, short, icon, form
-- [ ] agent: view, short, icon, form
-- [ ] request: view, short, icon, form
-- [ ] user: view, short, icon, form
-- [ ] comment: comments-view, comment-short, comment-form
+- [x] property: view, short, icon, form
+- [x] listing: view, short, icon, form
+- [x] record: view, short, form (no icon per README)
+- [x] complex: view, short, icon, form
+- [x] developer: view, short, icon, form
+- [x] agency: view, short, icon, form
+- [x] agent: view, short, icon, form
+- [x] request: view, short, icon, form
+- [x] user: view, short, icon, form
+- [x] comment: comments-view, comment-short, comment-form
 
 ### Pages
 
@@ -51,14 +51,14 @@ in components.
 - [ ] Explore — search/filter UI against the static dataset
 - [ ] Map — pins for entities, static coordinates in fixtures
 - [ ] Editor — forms render and validate, no persistence
-- [ ] property — dedicated detail page (replaces generic Entity page)
-- [ ] listing — dedicated detail page
-- [ ] records — dedicated detail page
-- [ ] complex — dedicated detail page
-- [ ] developer — dedicated detail page
-- [ ] agency — dedicated detail page
-- [ ] agent — dedicated detail page
-- [ ] client — dedicated detail page (replaces generic user-facing Entity view)
+- [x] property — dedicated detail page (replaces generic Entity page)
+- [x] listing — dedicated detail page
+- [x] records — dedicated detail page
+- [x] complex — dedicated detail page
+- [x] developer — dedicated detail page
+- [x] agency — dedicated detail page
+- [x] agent — dedicated detail page
+- [x] client — dedicated detail page (replaces generic user-facing Entity view)
 
 Removed: Sign, Workspace (already covered by existing template pages),
 Investment (not needed yet). Workspace's role is replaced by Explore.
