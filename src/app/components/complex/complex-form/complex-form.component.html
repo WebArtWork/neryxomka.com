@@ -1,66 +1,61 @@
 <form class="form" [formGroup]="form">
 		<div class="form__field">
-			<label class="form__label" for="name">Name</label>
-			<input id="name" class="form__control" type="text" [formControlName]="'name'" [class._invalid]="form.get('name')?.invalid && form.get('name')?.touched" />
+			<label class="form__label" for="name" translate>Назва</label>
+			<input id="name" class="form__control" type="text" pInputText [formControlName]="'name'" [class._invalid]="form.get('name')?.invalid && form.get('name')?.touched" />
 			@if (form.get('name')?.hasError('required') && form.get('name')?.touched) {
-				<span class="form__error">Name is required</span>
+				<span class="form__error" translate>Назва обов'язкова</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="description">Description</label>
-			<textarea id="description" class="form__control" rows="4" [formControlName]="'description'" [class._invalid]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
+			<label class="form__label" for="description" translate>Опис</label>
+			<textarea id="description" pTextarea class="form__control" rows="4" [formControlName]="'description'" [class._invalid]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
 			@if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
-				<span class="form__error">Description is required</span>
+				<span class="form__error" translate>Опис обов'язковий</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="country">Country</label>
-			<input id="country" class="form__control" type="text" [formControlName]="'country'" [class._invalid]="form.get('country')?.invalid && form.get('country')?.touched" />
+			<label class="form__label" for="country" translate>Країна</label>
+			<input id="country" class="form__control" type="text" pInputText [formControlName]="'country'" [class._invalid]="form.get('country')?.invalid && form.get('country')?.touched" />
 			@if (form.get('country')?.hasError('required') && form.get('country')?.touched) {
-				<span class="form__error">Country is required</span>
+				<span class="form__error" translate>Країна обов'язкова</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="city">City</label>
-			<input id="city" class="form__control" type="text" [formControlName]="'city'" [class._invalid]="form.get('city')?.invalid && form.get('city')?.touched" />
+			<label class="form__label" for="city" translate>Місто</label>
+			<input id="city" class="form__control" type="text" pInputText [formControlName]="'city'" [class._invalid]="form.get('city')?.invalid && form.get('city')?.touched" />
 			@if (form.get('city')?.hasError('required') && form.get('city')?.touched) {
-				<span class="form__error">City is required</span>
+				<span class="form__error" translate>Місто обов'язкове</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="address">Address</label>
-			<input id="address" class="form__control" type="text" [formControlName]="'address'" [class._invalid]="form.get('address')?.invalid && form.get('address')?.touched" />
+			<label class="form__label" for="address" translate>Адреса</label>
+			<input id="address" class="form__control" type="text" pInputText [formControlName]="'address'" [class._invalid]="form.get('address')?.invalid && form.get('address')?.touched" />
 			@if (form.get('address')?.hasError('required') && form.get('address')?.touched) {
-				<span class="form__error">Address is required</span>
+				<span class="form__error" translate>Адреса обов'язкова</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="status">Status</label>
-			<select id="status" class="form__control" [formControlName]="'status'">
-				<option value="planned">planned</option>
-				<option value="under-construction">under-construction</option>
-				<option value="completed">completed</option>
-				<option value="archived">archived</option>
-			</select>
+			<label class="form__label" for="status" translate>Статус</label>
+			<p-select id="status" [formControlName]="'status'" [options]="statusOptions" optionLabel="label" optionValue="value" appendTo="body" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="constructionProgressPercent">Construction progress (%)</label>
-			<input id="constructionProgressPercent" class="form__control" type="number" [formControlName]="'constructionProgressPercent'" [class._invalid]="form.get('constructionProgressPercent')?.invalid && form.get('constructionProgressPercent')?.touched" />
+			<label class="form__label" for="constructionProgressPercent" translate>Хід будівництва (%)</label>
+			<p-inputnumber id="constructionProgressPercent" [formControlName]="'constructionProgressPercent'" [min]="0" [max]="100" [invalid]="form.get('constructionProgressPercent')?.invalid && form.get('constructionProgressPercent')?.touched" />
 			@if (form.get('constructionProgressPercent')?.hasError('min') && form.get('constructionProgressPercent')?.touched) {
-				<span class="form__error">Must be 0-100</span>
+				<span class="form__error" translate>Має бути від 0 до 100</span>
 			}
 			@if (form.get('constructionProgressPercent')?.hasError('max') && form.get('constructionProgressPercent')?.touched) {
-				<span class="form__error">Must be 0-100</span>
+				<span class="form__error" translate>Має бути від 0 до 100</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="coverImage">Cover image URL</label>
-			<input id="coverImage" class="form__control" type="text" [formControlName]="'coverImage'" [class._invalid]="form.get('coverImage')?.invalid && form.get('coverImage')?.touched" />
+			<label class="form__label" for="coverImage" translate>URL обкладинки</label>
+			<input id="coverImage" class="form__control" type="text" pInputText [formControlName]="'coverImage'" [class._invalid]="form.get('coverImage')?.invalid && form.get('coverImage')?.touched" />
 
 		</div>
 
 	<div class="form__actions">
-		<button type="button" class="form__submit" [disabled]="form.invalid">Save</button>
+		<button type="button" pButton class="form__submit" [disabled]="form.invalid"><span translate>Зберегти</span></button>
 	</div>
 </form>

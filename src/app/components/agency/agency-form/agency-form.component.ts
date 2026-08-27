@@ -2,12 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
+import { InputNumberModule } from '@wawjs/ngx-prime/inputnumber';
+import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
+import { TextareaModule } from '@wawjs/ngx-prime/textarea';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { Agency } from '../../../agency/agency.interface';
 
 @Component({
 	selector: 'app-agency-form',
 	standalone: true,
-	imports: [CommonModule, ReactiveFormsModule],
+	imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputNumberModule, InputTextModule, TextareaModule, TranslateDirective],
 	templateUrl: './agency-form.component.html',
 	styleUrl: './agency-form.component.scss',
 })

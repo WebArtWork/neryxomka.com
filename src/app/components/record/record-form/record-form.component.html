@@ -1,102 +1,72 @@
 <form class="form" [formGroup]="form">
 		<div class="form__field">
-			<label class="form__label" for="recordType">Record type</label>
-			<select id="recordType" class="form__control" [formControlName]="'recordType'">
-				<option value="infrastructure">infrastructure</option>
-				<option value="utility">utility</option>
-				<option value="maintenance">maintenance</option>
-				<option value="repair">repair</option>
-				<option value="renovation">renovation</option>
-				<option value="expense">expense</option>
-				<option value="inspection">inspection</option>
-				<option value="incident">incident</option>
-				<option value="damage">damage</option>
-				<option value="improvement">improvement</option>
-				<option value="equipment-installation">equipment-installation</option>
-				<option value="meter-replacement">meter-replacement</option>
-				<option value="document">document</option>
-				<option value="ownership-change">ownership-change</option>
-				<option value="tenant-change">tenant-change</option>
-				<option value="valuation">valuation</option>
-				<option value="note">note</option>
-			</select>
+			<label class="form__label" for="recordType" translate>Тип запису</label>
+			<p-select id="recordType" formControlName="recordType" [options]="recordTypeOptions" optionLabel="label" optionValue="value" appendTo="body" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="title">Title</label>
-			<input id="title" class="form__control" type="text" [formControlName]="'title'" [class._invalid]="form.get('title')?.invalid && form.get('title')?.touched" />
+			<label class="form__label" for="title" translate>Заголовок</label>
+			<input id="title" pInputText class="form__control" type="text" [formControlName]="'title'" [class._invalid]="form.get('title')?.invalid && form.get('title')?.touched" />
 			@if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
-				<span class="form__error">Title is required</span>
+				<span class="form__error" translate>Заголовок обов'язковий</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="description">Description</label>
-			<textarea id="description" class="form__control" rows="4" [formControlName]="'description'" [class._invalid]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
+			<label class="form__label" for="description" translate>Опис</label>
+			<textarea id="description" pTextarea class="form__control" rows="4" [formControlName]="'description'" [class._invalid]="form.get('description')?.invalid && form.get('description')?.touched"></textarea>
 			@if (form.get('description')?.hasError('required') && form.get('description')?.touched) {
-				<span class="form__error">Description is required</span>
+				<span class="form__error" translate>Опис обов'язковий</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="eventDate">Event date</label>
-			<input id="eventDate" class="form__control" type="date" [formControlName]="'eventDate'" [class._invalid]="form.get('eventDate')?.invalid && form.get('eventDate')?.touched" />
+			<label class="form__label" for="eventDate" translate>Дата події</label>
+			<input id="eventDate" pInputText class="form__control" type="date" [formControlName]="'eventDate'" [class._invalid]="form.get('eventDate')?.invalid && form.get('eventDate')?.touched" />
 			@if (form.get('eventDate')?.hasError('required') && form.get('eventDate')?.touched) {
-				<span class="form__error">Date is required</span>
+				<span class="form__error" translate>Дата обов'язкова</span>
 			}
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="serviceProvider">Service provider</label>
-			<input id="serviceProvider" class="form__control" type="text" [formControlName]="'serviceProvider'" [class._invalid]="form.get('serviceProvider')?.invalid && form.get('serviceProvider')?.touched" />
+			<label class="form__label" for="serviceProvider" translate>Постачальник послуг</label>
+			<input id="serviceProvider" pInputText class="form__control" type="text" [formControlName]="'serviceProvider'" [class._invalid]="form.get('serviceProvider')?.invalid && form.get('serviceProvider')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="cost">Cost</label>
-			<input id="cost" class="form__control" type="number" [formControlName]="'cost'" [class._invalid]="form.get('cost')?.invalid && form.get('cost')?.touched" />
+			<label class="form__label" for="cost" translate>Вартість</label>
+			<p-inputnumber id="cost" formControlName="cost" [invalid]="form.get('cost')?.invalid && form.get('cost')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="currency">Currency</label>
-			<input id="currency" class="form__control" type="text" [formControlName]="'currency'" [class._invalid]="form.get('currency')?.invalid && form.get('currency')?.touched" />
+			<label class="form__label" for="currency" translate>Валюта</label>
+			<input id="currency" pInputText class="form__control" type="text" [formControlName]="'currency'" [class._invalid]="form.get('currency')?.invalid && form.get('currency')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="quantity">Quantity</label>
-			<input id="quantity" class="form__control" type="number" [formControlName]="'quantity'" [class._invalid]="form.get('quantity')?.invalid && form.get('quantity')?.touched" />
+			<label class="form__label" for="quantity" translate>Кількість</label>
+			<p-inputnumber id="quantity" formControlName="quantity" [invalid]="form.get('quantity')?.invalid && form.get('quantity')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="units">Units</label>
-			<input id="units" class="form__control" type="text" [formControlName]="'units'" [class._invalid]="form.get('units')?.invalid && form.get('units')?.touched" />
+			<label class="form__label" for="units" translate>Одиниці виміру</label>
+			<input id="units" pInputText class="form__control" type="text" [formControlName]="'units'" [class._invalid]="form.get('units')?.invalid && form.get('units')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="status">Status</label>
-			<select id="status" class="form__control" [formControlName]="'status'">
-				<option value="planned">planned</option>
-				<option value="in-progress">in-progress</option>
-				<option value="completed">completed</option>
-				<option value="cancelled">cancelled</option>
-			</select>
+			<label class="form__label" for="status" translate>Статус</label>
+			<p-select id="status" formControlName="status" [options]="statusOptions" optionLabel="label" optionValue="value" appendTo="body" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="locationInsideProperty">Location inside property</label>
-			<input id="locationInsideProperty" class="form__control" type="text" [formControlName]="'locationInsideProperty'" [class._invalid]="form.get('locationInsideProperty')?.invalid && form.get('locationInsideProperty')?.touched" />
+			<label class="form__label" for="locationInsideProperty" translate>Розташування в об'єкті</label>
+			<input id="locationInsideProperty" pInputText class="form__control" type="text" [formControlName]="'locationInsideProperty'" [class._invalid]="form.get('locationInsideProperty')?.invalid && form.get('locationInsideProperty')?.touched" />
 
 		</div>
 		<div class="form__field">
-			<label class="form__label" for="visibility">Visibility</label>
-			<select id="visibility" class="form__control" [formControlName]="'visibility'">
-				<option value="public">public</option>
-				<option value="public-summary-private-details">public-summary-private-details</option>
-				<option value="private">private</option>
-				<option value="shared-with-selected-users">shared-with-selected-users</option>
-				<option value="shared-with-owners-tenants">shared-with-owners-tenants</option>
-				<option value="shared-with-agent-agency-contractor-manager">shared-with-agent-agency-contractor-manager</option>
-			</select>
+			<label class="form__label" for="visibility" translate>Видимість</label>
+			<p-select id="visibility" formControlName="visibility" [options]="visibilityOptions" optionLabel="label" optionValue="value" appendTo="body" />
 
 		</div>
 
 	<div class="form__actions">
-		<button type="button" class="form__submit" [disabled]="form.invalid">Save</button>
+		<button type="button" pButton class="form__submit" [disabled]="form.invalid"><span translate>Зберегти</span></button>
 	</div>
 </form>
