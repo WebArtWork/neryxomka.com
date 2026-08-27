@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
 	{
-		path: ':id',
+		path: '',
 		loadComponent: () =>
 			import('./agency.component').then((m) => m.AgencyComponent),
 	},
