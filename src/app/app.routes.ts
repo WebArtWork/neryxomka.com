@@ -8,8 +8,8 @@ export const routes: Routes = [
 		pathMatch: 'full',
 		canActivate: [MetaGuard],
 		loadComponent: () =>
-			import('./layouts/guest/guest.component').then(
-				(m) => m.GuestComponent,
+			import('./layouts/user/user.component').then(
+				(m) => m.UserComponent,
 			),
 		data: {
 			meta: {
@@ -25,8 +25,8 @@ export const routes: Routes = [
 		path: '',
 		canActivate: [guestGuard],
 		loadComponent: () =>
-			import('./layouts/guest/guest.component').then(
-				(m) => m.GuestComponent,
+			import('./layouts/user/user.component').then(
+				(m) => m.UserComponent,
 			),
 		children: [
 			{
