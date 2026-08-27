@@ -1,0 +1,70 @@
+<div class="home min-h-dvh bg-[var(--c-bg-primary)]">
+	<section
+		class="home__hero flex min-h-[70dvh] flex-col items-center justify-center gap-6 px-6 py-16 text-center"
+	>
+		@if (company.image) {
+		<img
+			class="block h-16 w-auto object-contain"
+			[src]="company.image"
+			[attr.alt]="company.name"
+		/>
+		}
+
+		<h1
+			class="m-0 max-w-3xl text-4xl font-bold text-[var(--c-text-primary)] md:text-5xl"
+		>
+			{{ company.name }}
+		</h1>
+
+		<p
+			class="m-0 max-w-2xl text-lg text-[var(--c-text-secondary)] md:text-xl"
+		>
+			{{ company.description }}
+		</p>
+
+		<p class="m-0 max-w-2xl text-base text-[var(--c-text-muted)]">
+			<span translate
+				>Кожен об’єкт нерухомості отримує цифровий паспорт: повну
+				історію ремонтів, обслуговування та комунікацій — не лише
+				оголошення, а прозоре походження об’єкта.</span
+			>
+		</p>
+
+		<div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+			<a pButton routerLink="/sign" class="px-6">
+				<span translate>Розпочати</span>
+			</a>
+		</div>
+	</section>
+
+	<section class="home__features px-6 pb-16 md:px-10">
+		<h2
+			class="m-0 mb-8 text-center text-2xl font-bold text-[var(--c-text-primary)]"
+			translate
+		>
+			Як це працює
+		</h2>
+
+		<div
+			class="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
+		>
+			@for (feature of features; track feature.title) {
+			<p-card class="home__feature-card">
+				<div class="flex flex-col items-start gap-3">
+					<i
+						class="{{ feature.icon }} text-2xl text-[var(--c-primary)]"
+					></i>
+					<h3
+						class="m-0 text-base font-semibold text-[var(--c-text-primary)]"
+					>
+						{{ feature.title }}
+					</h3>
+					<p class="m-0 text-sm text-[var(--c-text-muted)]">
+						{{ feature.description }}
+					</p>
+				</div>
+			</p-card>
+			}
+		</div>
+	</section>
+</div>

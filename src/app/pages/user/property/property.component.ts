@@ -26,6 +26,6 @@ export class PropertyComponent {
 		properties.find((item) => item._id === this._id()),
 	);
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/dashboard' };
+	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
 	readonly breadcrumb: MenuItem[] = [{ label: 'Об’єкт нерухомості' }];
 }
