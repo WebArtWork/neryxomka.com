@@ -30,48 +30,10 @@
 		position: relative;
 		flex: 1 1 480px;
 		min-width: 320px;
-		aspect-ratio: 4 / 3;
+		height: 32rem;
 		border-radius: var(--p-content-border-radius);
-		background:
-			linear-gradient(0deg, rgba(128, 128, 128, 0.12) 1px, transparent 1px),
-			linear-gradient(90deg, rgba(128, 128, 128, 0.12) 1px, transparent 1px),
-			var(--p-content-background);
-		background-size: 10% 10%;
 		border: 1px solid var(--p-content-border-color);
 		overflow: hidden;
-	}
-
-	&__pin {
-		position: absolute;
-		transform: translate(-50%, -100%);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 2rem;
-		border-radius: 50% 50% 50% 0;
-		transform-origin: bottom center;
-		rotate: -45deg;
-		border: none;
-		cursor: pointer;
-		background: var(--p-primary-color);
-		color: var(--p-primary-contrast-color);
-		box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-		transition: transform 0.15s ease, background 0.15s ease;
-
-		i {
-			rotate: 45deg;
-		}
-
-		&:hover {
-			transform: translate(-50%, -100%) scale(1.1);
-			rotate: -45deg;
-		}
-
-		&--active {
-			background: var(--p-primary-700, var(--p-primary-color));
-			transform: translate(-50%, -100%) scale(1.15);
-		}
 	}
 
 	&__empty {

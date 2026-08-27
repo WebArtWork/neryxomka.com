@@ -1,68 +1,61 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { PropertyShortComponent } from '../../../components/property/property-short/property-short.component';
+import { LeafletMapComponent, LeafletMapMarker } from '../../../shared/leaflet-map/leaflet-map.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
-
-interface PropertyPin {
-	property: Property;
-	left: number;
-	top: number;
-}
 
 /**
  * Deviation note: `@wawjs/ngx-map`'s `MapComponent` (`lib-map`) wraps
  * `@angular/google-maps` and requires a Google Maps JS API key/loader plus
  * network access to Google's tile servers. This repo has no key configured
  * anywhere (`environment.ts`, `app.config.ts`, `index.html`) and no
- * `provideNgxMap(...)` call, and per ROADMAP.md this page must stay fully
- * static (fixture coordinates only, no live geocoding, no backend). Rather
- * than introduce an unconfigured external dependency for an investor-facing
- * static demo, pins are plotted on a self-contained proportional scatter
- * plot derived from each property's fixture `coordinates`, normalized
- * against the bounding box of all property coordinates.
+ * `provideNgxMap(...)` call. Rather than introduce an unconfigured external
+ * dependency, this page renders a real interactive map using `leaflet` +
+ * OpenStreetMap tiles via the shared `LeafletMapComponent` wrapper, which
+ * needs no API key at all.
  */
 @Component({
-	imports: [ButtonModule, CardModule, PropertyShortComponent],
+	imports: [ButtonModule, CardModule, PropertyShortComponent, LeafletMapComponent],
 	templateUrl: './map.component.html',
 	styleUrl: './map.component.scss',
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent {
 	private readonly _router = inject(Router);
 
 	readonly selected = signal<Property | null>(null);
 
-	readonly pins = computed<PropertyPin[]>(() => {
-		const withCoords = properties.filter((item) => item.coordinates);
+	private readonly _propertiesWithCoords = computed(() => properties.filter((item) => item.coordinates));
+
+	readonly center = computed<{ lat: number; lng: number }>(() => {
+		const withCoords = this._propertiesWithCoords();
 		if (!withCoords.length) {
-			return [];
+			return { lat: 50.4501, lng: 30.5234 }; // Kyiv, as a sensible default
 		}
 
 		const lats = withCoords.map((item) => item.coordinates.lat);
 		const lngs = withCoords.map((item) => item.coordinates.lng);
-		const minLat = Math.min(...lats);
-		const maxLat = Math.max(...lats);
-		const minLng = Math.min(...lngs);
-		const maxLng = Math.max(...lngs);
-		const latSpan = maxLat - minLat || 1;
-		const lngSpan = maxLng - minLng || 1;
-		const padding = 8;
-
-		return withCoords.map((property) => {
-			const xRatio = (property.coordinates.lng - minLng) / lngSpan;
-			const yRatio = (property.coordinates.lat - minLat) / latSpan;
-			return {
-				property,
-				left: padding + xRatio * (100 - padding * 2),
-				// invert latitude: higher lat renders nearer the top
-				top: padding + (1 - yRatio) * (100 - padding * 2),
-			};
-		});
+		return {
+			lat: (Math.min(...lats) + Math.max(...lats)) / 2,
+			lng: (Math.min(...lngs) + Math.max(...lngs)) / 2,
+		};
 	});
 
-	select(property: Property): void {
+	readonly zoom = 12;
+
+	readonly markers = computed<LeafletMapMarker[]>(() =>
+		this._propertiesWithCoords().map((property) => ({
+			id: property._id,
+			position: property.coordinates,
+			title: property.address,
+		})),
+	);
+
+	onMarkerSelected(marker: LeafletMapMarker): void {
+		const property = properties.find((item) => item._id === marker.id) ?? null;
 		this.selected.set(property);
 	}
 
