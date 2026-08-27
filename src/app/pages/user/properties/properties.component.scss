@@ -1,0 +1,53 @@
+.properties {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-4);
+}
+
+.properties__header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-1);
+}
+
+.properties__title {
+	margin: 0;
+	color: var(--c-text-secondary);
+}
+
+.properties__hint {
+	font-size: 0.85rem;
+	color: var(--c-text-muted);
+}
+
+.properties__field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-1);
+}
+
+.properties__results {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-3);
+}
+
+.properties__count {
+	font-size: 0.85rem;
+	color: var(--c-text-muted);
+}
+
+.properties__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: var(--sp-4);
+}
+
+.properties__card {
+	cursor: pointer;
+}
+
+.properties__empty {
+	text-align: center;
+	color: var(--c-text-muted);
+}

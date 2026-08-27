@@ -1,0 +1,39 @@
+<section class="properties">
+	<header class="properties__header">
+		<h2 class="properties__title">Об’єкти</h2>
+		<span class="properties__hint">Перегляньте всі об’єкти нерухомості Neryxomka</span>
+	</header>
+
+	<p-card class="properties__filters">
+		<div class="properties__field">
+			<label for="properties-search">Пошук</label>
+			<input
+				id="properties-search"
+				pInputText
+				type="text"
+				placeholder="Адреса, місто або країна"
+				[fluid]="true"
+				[ngModel]="searchTerm()"
+				(ngModelChange)="searchTerm.set($event)"
+			/>
+		</div>
+	</p-card>
+
+	<div class="properties__results">
+		<span class="properties__count">Знайдено об’єктів: {{ results().length }}</span>
+
+		@if (results().length) {
+		<div class="properties__grid">
+			@for (item of results(); track item._id) {
+			<p-card class="properties__card" (click)="view(item)">
+				<app-property-short [entity]="item" />
+			</p-card>
+			}
+		</div>
+		} @else {
+		<p-card class="properties__empty">
+			<p>За заданим запитом об’єктів не знайдено.</p>
+		</p-card>
+		}
+	</div>
+</section>

@@ -126,6 +126,51 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'properties',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Об’єкти',
+						description:
+							'Перегляньте всі об’єкти нерухомості в цифровому паспорті Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/properties/properties.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'agencies',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Агентства',
+						description:
+							'Перегляньте всі агентства нерухомості, представлені в Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/agencies/agencies.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'developers',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Забудовники',
+						description:
+							'Перегляньте всіх забудовників, представлених у Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/developers/developers.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'explore',
 				canActivate: [MetaGuard],
 				data: {

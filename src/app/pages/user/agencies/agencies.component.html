@@ -1,0 +1,39 @@
+<section class="agencies">
+	<header class="agencies__header">
+		<h2 class="agencies__title">Агентства</h2>
+		<span class="agencies__hint">Перегляньте всі агентства нерухомості Neryxomka</span>
+	</header>
+
+	<p-card class="agencies__filters">
+		<div class="agencies__field">
+			<label for="agencies-search">Пошук</label>
+			<input
+				id="agencies-search"
+				pInputText
+				type="text"
+				placeholder="Назва, місто або країна"
+				[fluid]="true"
+				[ngModel]="searchTerm()"
+				(ngModelChange)="searchTerm.set($event)"
+			/>
+		</div>
+	</p-card>
+
+	<div class="agencies__results">
+		<span class="agencies__count">Знайдено агентств: {{ results().length }}</span>
+
+		@if (results().length) {
+		<div class="agencies__grid">
+			@for (item of results(); track item._id) {
+			<p-card class="agencies__card" (click)="view(item)">
+				<app-agency-short [entity]="item" />
+			</p-card>
+			}
+		</div>
+		} @else {
+		<p-card class="agencies__empty">
+			<p>За заданим запитом агентств не знайдено.</p>
+		</p-card>
+		}
+	</div>
+</section>

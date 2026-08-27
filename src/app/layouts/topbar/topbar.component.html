@@ -28,6 +28,50 @@
 			/>
 		</li>
 
+		<li
+			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+		>
+			<app-nav-icon
+				routerLink="/properties"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Properties')()"
+				[ariaLabel]="translateService.translate('Properties')()"
+				icon="building"
+			/>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+		>
+			<app-nav-icon
+				routerLink="/agencies"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Agencies')()"
+				[ariaLabel]="translateService.translate('Agencies')()"
+				icon="briefcase"
+			/>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+		>
+			<app-nav-icon
+				routerLink="/developers"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Developers')()"
+				[ariaLabel]="translateService.translate('Developers')()"
+				icon="users"
+			/>
+		</li>
+
+		<li
+			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+		>
+			<app-nav-icon
+				routerLink="/feed"
+				[name]="viewport() === 'mobile' ? '' : translateService.translate('Feed')()"
+				[ariaLabel]="translateService.translate('Feed')()"
+				icon="images"
+			/>
+		</li>
+
 		<li class="mx-auto max-md:hidden"></li>
 
 		@if (sidebarToggler()) {
