@@ -1,15 +1,16 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
-import { CardModule } from '@wawjs/ngx-prime/card';
-import { ListingShortComponent } from '../../../components/listing/listing-short/listing-short.component';
 import { Listing } from '../../../listing/listing.interface';
 import { listings } from '../../../listing/listing.data';
 
 type FeedAction = 'favourite' | 'ignore';
 
+/** Fallback image shown when a listing has no photos or its photo fails to load. */
+const DEFAULT_PHOTO = '/property-default.svg';
+
 @Component({
-	imports: [ListingShortComponent, ButtonModule, CardModule],
+	imports: [ButtonModule],
 	templateUrl: './feed.component.html',
 	styleUrl: './feed.component.scss',
 })
@@ -27,64 +28,28 @@ export class FeedComponent {
 		);
 	});
 
-	private readonly _dragState = signal<{ id: string; deltaX: number } | null>(
-		null,
-	);
-	readonly dragState = this._dragState.asReadonly();
-
-	private _pointerId: number | null = null;
-	private _startX = 0;
-
+	/** Navigates to the listing's detail page. */
 	view(item: Listing): void {
 		this._router.navigate(['/listing', item._id]);
 	}
 
+	/** Marks a listing as favourited or ignored, persisting the choice to localStorage. */
 	act(item: Listing, action: FeedAction): void {
 		if (action === 'favourite') {
 			this._update('favourited', this.favouritedIds, item._id);
 		} else {
 			this._update('ignored', this.ignoredIds, item._id);
 		}
-		this._dragState.set(null);
 	}
 
-	onPointerDown(event: PointerEvent, item: Listing): void {
-		this._pointerId = event.pointerId;
-		this._startX = event.clientX;
-		this._dragState.set({ id: item._id, deltaX: 0 });
+	/** Returns the listing's first photo, falling back to the shared default image. */
+	photo(item: Listing): string {
+		return item.photos[0] || DEFAULT_PHOTO;
 	}
 
-	onPointerMove(event: PointerEvent, item: Listing): void {
-		if (this._pointerId !== event.pointerId) {
-			return;
-		}
-		this._dragState.set({
-			id: item._id,
-			deltaX: event.clientX - this._startX,
-		});
-	}
-
-	onPointerUp(event: PointerEvent, item: Listing): void {
-		if (this._pointerId !== event.pointerId) {
-			return;
-		}
-		this._pointerId = null;
-
-		const state = this._dragState();
-		const threshold = 96;
-
-		if (state && state.id === item._id) {
-			if (state.deltaX >= threshold) {
-				this.act(item, 'favourite');
-				return;
-			}
-			if (state.deltaX <= -threshold) {
-				this.act(item, 'ignore');
-				return;
-			}
-		}
-
-		this._dragState.set(null);
+	/** Swaps in the default photo when the listing's image fails to load. */
+	onPhotoError(event: Event): void {
+		(event.target as HTMLImageElement).src = DEFAULT_PHOTO;
 	}
 
 	private _update(

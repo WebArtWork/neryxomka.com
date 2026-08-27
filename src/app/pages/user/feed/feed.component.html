@@ -1,48 +1,75 @@
-<section class="feed">
-	<header class="feed__header">
-		<h2 class="feed__title">Стрічка</h2>
-		<span class="feed__hint">Свайпніть картку вправо, щоб додати в обране, або вліво, щоб пропустити</span>
-	</header>
+<div class="feed">
+	<h1 class="sr-only">Стрічка оголошень</h1>
 
-	@if (feed().length) {
-	<div class="feed__stack">
-		@for (item of feed(); track item._id) {
-		<p-card
-			class="feed__card"
-			[class.feed__card--dragging]="dragState()?.id === item._id"
-			[style.transform]="dragState()?.id === item._id ? 'translateX(' + dragState()!.deltaX + 'px) rotate(' + dragState()!.deltaX / 16 + 'deg)' : null"
-			(pointerdown)="onPointerDown($event, item)"
-			(pointermove)="onPointerMove($event, item)"
-			(pointerup)="onPointerUp($event, item)"
-			(pointercancel)="onPointerUp($event, item)"
-		>
-			<div class="feed__card-body" (click)="view(item)">
-				<app-listing-short [entity]="item" />
-			</div>
+	@let items = feed();
 
-			<div class="feed__actions">
-				<p-button
-					icon="pi pi-times"
-					severity="danger"
-					[rounded]="true"
-					[outlined]="true"
-					label="Пропустити"
-					(onClick)="act(item, 'ignore')"
-				/>
-				<p-button
-					icon="pi pi-heart"
-					severity="success"
-					[rounded]="true"
-					label="Обране"
-					(onClick)="act(item, 'favourite')"
-				/>
-			</div>
-		</p-card>
-		}
-	</div>
+	@if (items.length) {
+		<div class="feed__scroll">
+			@for (item of items; track item._id) {
+				<section class="feed__section">
+					<img
+						class="feed__img"
+						[src]="photo(item)"
+						[alt]="item.title"
+						loading="lazy"
+						(error)="onPhotoError($event)"
+					/>
+					<div class="feed__overlay"></div>
+
+					<div class="feed__info">
+						<div class="feed__chips">
+							<span class="feed__chip">{{ item.price }} {{ item.currency }}</span>
+							<span class="feed__chip">{{ item.listingType }}</span>
+							<span class="feed__chip">{{ item.status }}</span>
+						</div>
+
+						<div
+							class="feed__link"
+							role="link"
+							tabindex="0"
+							(click)="view(item)"
+							(keydown.enter)="view(item)"
+						>
+							<h2 class="feed__heading">{{ item.title }}</h2>
+						</div>
+
+						<div class="feed__location">
+							<span class="feed__location-icon"><i class="pi pi-map-marker"></i></span>
+							<span class="feed__location-text">{{ item.publicLocation }}</span>
+						</div>
+					</div>
+
+					<div class="feed__sidebar">
+						<div class="feed__action">
+							<p-button
+								icon="pi pi-heart"
+								severity="success"
+								[rounded]="true"
+								[outlined]="true"
+								styleClass="feed__action-btn"
+								(onClick)="act(item, 'favourite')"
+							/>
+							<span class="feed__action-label">Обране</span>
+						</div>
+
+						<div class="feed__action">
+							<p-button
+								icon="pi pi-times"
+								severity="danger"
+								[rounded]="true"
+								[outlined]="true"
+								styleClass="feed__action-btn"
+								(onClick)="act(item, 'ignore')"
+							/>
+							<span class="feed__action-label">Пропустити</span>
+						</div>
+					</div>
+				</section>
+			}
+		</div>
 	} @else {
-	<p-card class="feed__empty">
-		<p>Оголошень для перегляду більше немає.</p>
-	</p-card>
+		<div class="feed__empty">
+			<p>Оголошень для перегляду більше немає.</p>
+		</div>
 	}
-</section>
+</div>
