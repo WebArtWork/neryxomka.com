@@ -2,8 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem, MessageService } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
+import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateService } from '@wawjs/ngx-translate';
@@ -12,7 +11,7 @@ import { Developer } from '../../../developer/developer.interface';
 import { developers } from '../../../developer/developer.data';
 
 @Component({
-	imports: [DeveloperViewComponent, BreadcrumbModule, CardModule, ButtonModule],
+	imports: [DeveloperViewComponent, CardModule, ButtonModule],
 	templateUrl: './developer.component.html',
 	styleUrl: './developer.component.scss',
 })
@@ -30,8 +29,6 @@ export class DeveloperComponent {
 		developers.find((item) => item._id === this._id()),
 	);
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Забудовник' }];
 
 	share(): void {
 		const url = `${window.location.origin}/developer/${this._id()}`;

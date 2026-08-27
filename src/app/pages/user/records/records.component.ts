@@ -2,8 +2,6 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { RecordViewComponent } from '../../../components/record/record-view/record-view.component';
 import { PropertyRecord } from '../../../record/record.interface';
@@ -17,7 +15,7 @@ const _propertyById = new Map<string, Property>(properties.map((p) => [p._id, p]
 const _userById = new Map<string, User>(users.map((u) => [u._id, u]));
 
 @Component({
-	imports: [RecordViewComponent, BreadcrumbModule, CardModule],
+	imports: [RecordViewComponent, CardModule],
 	templateUrl: './records.component.html',
 	styleUrl: './records.component.scss',
 })
@@ -51,6 +49,4 @@ export class RecordsComponent {
 			.filter((u): u is User => !!u);
 	});
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Запис історії' }];
 }

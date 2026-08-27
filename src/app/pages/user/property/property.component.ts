@@ -2,8 +2,6 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { PropertyViewComponent } from '../../../components/property/property-view/property-view.component';
 import { Property } from '../../../property/property.interface';
@@ -11,7 +9,7 @@ import { properties } from '../../../property/property.data';
 import { PropertyRelations, relationsForProperty } from '../../../property/property-relations';
 
 @Component({
-	imports: [PropertyViewComponent, BreadcrumbModule, CardModule],
+	imports: [PropertyViewComponent, CardModule],
 	templateUrl: './property.component.html',
 	styleUrl: './property.component.scss',
 })
@@ -32,6 +30,4 @@ export class PropertyComponent {
 		return property ? relationsForProperty(property) : null;
 	});
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Об’єкт нерухомості' }];
 }

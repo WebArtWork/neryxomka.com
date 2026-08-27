@@ -2,15 +2,13 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { UserViewComponent } from '../../../components/user/user-view/user-view.component';
 import { User } from '../../../user/user.interface';
 import { users } from '../../../user/user.data';
 
 @Component({
-	imports: [UserViewComponent, BreadcrumbModule, CardModule],
+	imports: [UserViewComponent, CardModule],
 	templateUrl: './client.component.html',
 	styleUrl: './client.component.scss',
 })
@@ -26,6 +24,4 @@ export class ClientComponent {
 		users.find((item) => item._id === this._id()),
 	);
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Профіль' }];
 }

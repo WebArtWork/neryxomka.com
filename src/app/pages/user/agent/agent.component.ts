@@ -2,8 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem, MessageService } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
+import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateService } from '@wawjs/ngx-translate';
@@ -12,7 +11,7 @@ import { Agent } from '../../../agent/agent.interface';
 import { agents } from '../../../agent/agent.data';
 
 @Component({
-	imports: [AgentViewComponent, BreadcrumbModule, CardModule, ButtonModule],
+	imports: [AgentViewComponent, CardModule, ButtonModule],
 	templateUrl: './agent.component.html',
 	styleUrl: './agent.component.scss',
 })
@@ -30,8 +29,6 @@ export class AgentComponent {
 		agents.find((item) => item._id === this._id()),
 	);
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Агент' }];
 
 	share(): void {
 		const url = `${window.location.origin}/agent/${this._id()}`;

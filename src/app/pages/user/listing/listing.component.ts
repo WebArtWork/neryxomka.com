@@ -2,8 +2,6 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem } from '@wawjs/ngx-prime/api';
-import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { ListingViewComponent } from '../../../components/listing/listing-view/listing-view.component';
 import { Listing } from '../../../listing/listing.interface';
@@ -11,7 +9,7 @@ import { listings } from '../../../listing/listing.data';
 import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
 
 @Component({
-	imports: [ListingViewComponent, BreadcrumbModule, CardModule],
+	imports: [ListingViewComponent, CardModule],
 	templateUrl: './listing.component.html',
 	styleUrl: './listing.component.scss',
 })
@@ -32,6 +30,4 @@ export class ListingComponent {
 		return listing ? relationsForListing(listing) : null;
 	});
 
-	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
-	readonly breadcrumb: MenuItem[] = [{ label: 'Оголошення' }];
 }
