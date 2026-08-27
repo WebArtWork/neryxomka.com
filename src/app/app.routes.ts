@@ -79,6 +79,19 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'feed',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Стрічка',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/feed/feed.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'property/:id',
 				canActivate: [MetaGuard],
 				data: {

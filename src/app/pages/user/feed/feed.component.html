@@ -1,0 +1,48 @@
+<section class="feed">
+	<header class="feed__header">
+		<h2 class="feed__title">Стрічка</h2>
+		<span class="feed__hint">Свайпніть картку вправо, щоб додати в обране, або вліво, щоб пропустити</span>
+	</header>
+
+	@if (feed().length) {
+	<div class="feed__stack">
+		@for (item of feed(); track item._id) {
+		<p-card
+			class="feed__card"
+			[class.feed__card--dragging]="dragState()?.id === item._id"
+			[style.transform]="dragState()?.id === item._id ? 'translateX(' + dragState()!.deltaX + 'px) rotate(' + dragState()!.deltaX / 16 + 'deg)' : null"
+			(pointerdown)="onPointerDown($event, item)"
+			(pointermove)="onPointerMove($event, item)"
+			(pointerup)="onPointerUp($event, item)"
+			(pointercancel)="onPointerUp($event, item)"
+		>
+			<div class="feed__card-body" (click)="view(item)">
+				<app-listing-short [entity]="item" />
+			</div>
+
+			<div class="feed__actions">
+				<p-button
+					icon="pi pi-times"
+					severity="danger"
+					[rounded]="true"
+					[outlined]="true"
+					label="Пропустити"
+					(onClick)="act(item, 'ignore')"
+				/>
+				<p-button
+					icon="pi pi-heart"
+					severity="success"
+					[rounded]="true"
+					label="Обране"
+					(onClick)="act(item, 'favourite')"
+				/>
+			</div>
+		</p-card>
+		}
+	</div>
+	} @else {
+	<p-card class="feed__empty">
+		<p>Оголошень для перегляду більше немає.</p>
+	</p-card>
+	}
+</section>
