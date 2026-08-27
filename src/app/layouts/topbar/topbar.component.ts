@@ -8,6 +8,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { CoreService } from '@wawjs/ngx-core';
 import { TranslateService } from '@wawjs/ngx-translate';
+import { companyProfile } from '../../company/company.data';
 import { NavIconComponent } from '../../shared/nav-icon/nav-icon.component';
 import { SidebarService } from '../sidebar/sidebar.service';
 
@@ -30,6 +31,8 @@ export class TopbarComponent {
 	private readonly _coreService = inject(CoreService);
 	private readonly _sidebarService = inject(SidebarService);
 	readonly translateService = inject(TranslateService);
+
+	readonly company = companyProfile;
 
 	readonly isOpen = input(false);
 	readonly sidebarToggler = input(false);

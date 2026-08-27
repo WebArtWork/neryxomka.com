@@ -3,7 +3,7 @@
 	"name": "Neryxomka",
 	"title": "Neryxomka",
 	"description": "Цифровий паспорт нерухомості: об'єкти, оголошення та повна історія в одному місці",
-	"image": "https://neryxomka.com/logo.png",
-	"favicon": "https://neryxomka.com/favicon.png",
+	"image": "/logo.png",
+	"favicon": "/favicon.png",
 	"siteUrl": "https://neryxomka.com"
 }
