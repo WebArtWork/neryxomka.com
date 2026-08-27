@@ -1,14 +1,14 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
-import { CardModule } from '@wawjs/ngx-prime/card';
+import { Router, RouterLink } from '@angular/router';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { PropertyShortComponent } from '../../../components/property/property-short/property-short.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
 
 @Component({
-	imports: [PropertyShortComponent, FormsModule, CardModule, InputTextModule],
+	imports: [PropertyShortComponent, FormsModule, RouterLink, ButtonModule, InputTextModule],
 	templateUrl: './properties.component.html',
 	styleUrl: './properties.component.scss',
 })

@@ -1,27 +1,21 @@
 <section class="properties">
-	<header class="properties__header">
-		<h2 class="properties__title">Об’єкти</h2>
-		<span class="properties__hint">Перегляньте всі об’єкти нерухомості Neryxomka</span>
-	</header>
+	<div class="properties__filters">
+		<input
+			id="properties-search"
+			pInputText
+			type="text"
+			placeholder="Адреса, місто або країна"
+			class="properties__search"
+			[ngModel]="searchTerm()"
+			(ngModelChange)="searchTerm.set($event)"
+		/>
 
-	<p-card class="properties__filters">
-		<div class="properties__field">
-			<label for="properties-search">Пошук</label>
-			<input
-				id="properties-search"
-				pInputText
-				type="text"
-				placeholder="Адреса, місто або країна"
-				[fluid]="true"
-				[ngModel]="searchTerm()"
-				(ngModelChange)="searchTerm.set($event)"
-			/>
-		</div>
-	</p-card>
+		<a pButton routerLink="/map" severity="secondary" size="small" class="properties__map-link">
+			Мапа
+		</a>
+	</div>
 
 	<div class="properties__results">
-		<span class="properties__count">Знайдено об’єктів: {{ results().length }}</span>
-
 		<div class="properties__grid">
 			@for (item of results(); track item._id) {
 			<div class="properties__row" (click)="view(item)">

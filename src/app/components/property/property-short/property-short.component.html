@@ -1,7 +1,11 @@
 <article class="short">
-	@if (entity.photos.length) {
-		<img class="short__thumb" [src]="entity.photos[0]" [alt]="entity.type" loading="lazy" />
-	}
+	<img
+		class="short__thumb"
+		[src]="photo"
+		[alt]="entity.type"
+		loading="lazy"
+		(error)="onPhotoError($event)"
+	/>
 
 	<div class="short__body">
 		<h3 class="short__title">{{ entity.type }} · {{ entity.city }}</h3>

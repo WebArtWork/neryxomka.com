@@ -85,6 +85,22 @@ export const routes: Routes = [
 						(m) => m.routes,
 					),
 			},
+			{
+				path: 'share-profile',
+				canActivate: [MetaGuard],
+				data: {
+					shareKind: 'profile',
+					meta: {
+						title: 'Поділитися профілем',
+						description: 'Відскануйте QR-код, щоб відкрити мій профіль Neryxomka.',
+						index: false,
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/share/share.routes').then(
+						(m) => m.routes,
+					),
+			},
 		],
 	},
 	{
@@ -107,6 +123,77 @@ export const routes: Routes = [
 				},
 				loadChildren: () =>
 					import('./pages/user/settings/settings.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'share',
+				canActivate: [MetaGuard],
+				data: {
+					shareKind: 'app',
+					meta: {
+						title: 'Поділитися Neryxomka',
+						description: 'Відскануйте QR-код, щоб приєднатися до Neryxomka за кілька секунд.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/share/share.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-users',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для користувачів',
+						description: 'Знаходьте житло без переплат посередникам разом з Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-users/for-users.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-agents',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для агентів',
+						description: 'Розвивайте свою практику агента нерухомості з Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-agents/for-agents.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-developers',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для забудовників',
+						description: 'Покажіть свої житлові комплекси покупцям на Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-developers/for-developers.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
+				path: 'for-agencies',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для агентств',
+						description: 'Розвивайте агентство нерухомості разом з Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-agencies/for-agencies.routes').then(
 						(m) => m.routes,
 					),
 			},

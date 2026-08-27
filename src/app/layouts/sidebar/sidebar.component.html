@@ -44,40 +44,11 @@
 
 	<app-nav-icon
 		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Explore')() : ''"
-		[ariaLabel]="translateService.translate('Explore')()"
+		[name]="showNames() ? translateService.translate('Поділитися профілем')() : ''"
+		[ariaLabel]="translateService.translate('Поділитися профілем')()"
 		(click)="closeIfOverlay()"
-		routerLink="/explore"
-		icon="th-large"
-	/>
-
-	<app-nav-icon
-		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Map')() : ''"
-		[ariaLabel]="translateService.translate('Map')()"
-		(click)="closeIfOverlay()"
-		routerLink="/map"
-		icon="map"
-	/>
-
-	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
-
-	<app-nav-icon
-		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Settings')() : ''"
-		[ariaLabel]="translateService.translate('Settings')()"
-		(click)="closeIfOverlay()"
-		routerLink="/settings"
-		icon="cog"
-	/>
-
-	<app-nav-icon
-		[class.sidebar--minimized-icon]="!showNames()"
-		[name]="showNames() ? translateService.translate('Editor')() : ''"
-		[ariaLabel]="translateService.translate('Editor')()"
-		(click)="closeIfOverlay()"
-		routerLink="/editor"
-		icon="pencil"
+		routerLink="/share-profile"
+		icon="id-card"
 	/>
 
 	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
@@ -121,4 +92,60 @@
 
 	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
 	}
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Settings')() : ''"
+		[ariaLabel]="translateService.translate('Settings')()"
+		(click)="closeIfOverlay()"
+		routerLink="/settings"
+		icon="cog"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Поділитися Neryxomka')() : ''"
+		[ariaLabel]="translateService.translate('Поділитися Neryxomka')()"
+		(click)="closeIfOverlay()"
+		routerLink="/share"
+		icon="qrcode"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Для користувачів')() : ''"
+		[ariaLabel]="translateService.translate('Для користувачів')()"
+		(click)="closeIfOverlay()"
+		routerLink="/for-users"
+		icon="user"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Для агентів')() : ''"
+		[ariaLabel]="translateService.translate('Для агентів')()"
+		(click)="closeIfOverlay()"
+		routerLink="/for-agents"
+		icon="id-card"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Для забудовників')() : ''"
+		[ariaLabel]="translateService.translate('Для забудовників')()"
+		(click)="closeIfOverlay()"
+		routerLink="/for-developers"
+		icon="building"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Для агентств')() : ''"
+		[ariaLabel]="translateService.translate('Для агентств')()"
+		(click)="closeIfOverlay()"
+		routerLink="/for-agencies"
+		icon="briefcase"
+	/>
+
+	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
 </aside>

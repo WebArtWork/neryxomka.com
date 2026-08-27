@@ -1,7 +1,5 @@
 <article class="short">
-	@if (entity.logo) {
-		<img class="short__thumb" [src]="entity.logo" [alt]="entity.name" loading="lazy" />
-	}
+	<img class="short__thumb" [src]="entity.logo || '/default-agency.png'" [alt]="entity.name" loading="lazy" />
 
 	<div class="short__body">
 		<h3 class="short__title">{{ entity.name }}</h3>

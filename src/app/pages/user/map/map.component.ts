@@ -7,6 +7,8 @@ import { LeafletMapComponent, LeafletMapMarker } from '../../../shared/leaflet-m
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
 
+type MapCategory = 'properties' | 'agencies' | 'developers';
+
 /**
  * Deviation note: `@wawjs/ngx-map`'s `MapComponent` (`lib-map`) wraps
  * `@angular/google-maps` and requires a Google Maps JS API key/loader plus
@@ -26,12 +28,21 @@ import { properties } from '../../../property/property.data';
 export class MapComponent {
 	private readonly _router = inject(Router);
 
+	readonly categories: { value: MapCategory; label: string }[] = [
+		{ value: 'properties', label: 'Об’єкти' },
+		{ value: 'agencies', label: 'Агенції' },
+		{ value: 'developers', label: 'Розробники' },
+	];
+
+	readonly activeCategory = signal<MapCategory>('properties');
+
 	readonly selected = signal<Property | null>(null);
+	private readonly _focusCenter = signal<{ lat: number; lng: number } | null>(null);
 
-	private readonly _propertiesWithCoords = computed(() => properties.filter((item) => item.coordinates));
+	readonly propertiesWithCoords = computed(() => properties.filter((item) => item.coordinates));
 
-	readonly center = computed<{ lat: number; lng: number }>(() => {
-		const withCoords = this._propertiesWithCoords();
+	private readonly _defaultCenter = computed<{ lat: number; lng: number }>(() => {
+		const withCoords = this.propertiesWithCoords();
 		if (!withCoords.length) {
 			return { lat: 50.4501, lng: 30.5234 }; // Kyiv, as a sensible default
 		}
@@ -44,15 +55,22 @@ export class MapComponent {
 		};
 	});
 
+	readonly center = computed<{ lat: number; lng: number }>(() => this._focusCenter() ?? this._defaultCenter());
+
 	readonly zoom = 12;
 
 	readonly markers = computed<LeafletMapMarker[]>(() =>
-		this._propertiesWithCoords().map((property) => ({
+		this.propertiesWithCoords().map((property) => ({
 			id: property._id,
 			position: property.coordinates,
 			title: property.address,
 		})),
 	);
+
+	selectCategory(category: MapCategory): void {
+		this.activeCategory.set(category);
+		this.selected.set(null);
+	}
 
 	onMarkerSelected(marker: LeafletMapMarker): void {
 		const property = properties.find((item) => item._id === marker.id) ?? null;
