@@ -92,6 +92,19 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'explore',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Пошук',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/explore/explore.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'property/:id',
 				canActivate: [MetaGuard],
 				data: {
