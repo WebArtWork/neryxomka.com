@@ -46,11 +46,11 @@ in components.
 
 ### Pages
 
-- [ ] Feed — scrollable feed, swipe left/right (favourite/ignore)
+- [x] Feed — scrollable feed, swipe left/right (favourite/ignore)
       against local static state
-- [ ] Explore — search/filter UI against the static dataset
-- [ ] Map — pins for entities, static coordinates in fixtures
-- [ ] Editor — forms render and validate, no persistence
+- [x] Explore — search/filter UI against the static dataset
+- [x] Map — pins for entities, static coordinates in fixtures
+- [x] Editor — forms render and validate, no persistence
 - [x] property — dedicated detail page (replaces generic Entity page)
 - [x] listing — dedicated detail page
 - [x] records — dedicated detail page

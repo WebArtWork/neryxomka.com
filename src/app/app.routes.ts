@@ -118,6 +118,19 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'editor',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Редактор',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/editor/editor.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'property/:id',
 				canActivate: [MetaGuard],
 				data: {
