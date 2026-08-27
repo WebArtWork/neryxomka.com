@@ -8,7 +8,33 @@ import { Developer } from '../developer/developer.interface';
 import { developers } from '../developer/developer.data';
 import { Property } from '../property/property.interface';
 import { properties } from '../property/property.data';
-import { Listing } from './listing.interface';
+import { Listing, ListingStatus, ListingType } from './listing.interface';
+
+/**
+ * Ukrainian labels for listing enums, shared across pages/components that
+ * render a listing (kept in sync with the copy used on the explore page).
+ */
+export const LISTING_TYPE_LABELS: Record<ListingType, string> = {
+	sale: 'Продаж',
+	'long-term-rent': 'Довгострокова оренда',
+	'short-term-rent': 'Короткострокова оренда',
+	'commercial-lease': 'Комерційна оренда',
+	'land-sale': 'Продаж землі',
+	other: 'Інше',
+};
+
+export const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
+	draft: 'Чернетка',
+	'pending-review': 'На розгляді',
+	active: 'Активне',
+	reserved: 'Заброньоване',
+	rented: 'Здано в оренду',
+	sold: 'Продано',
+	expired: 'Термін минув',
+	paused: 'Призупинено',
+	rejected: 'Відхилено',
+	archived: 'Архівоване',
+};
 
 /**
  * A listing's related entities are resolved through its property — property

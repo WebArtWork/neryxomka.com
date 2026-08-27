@@ -2,20 +2,24 @@ import { Component, computed, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { MenuItem } from '@wawjs/ngx-prime/api';
+import { MenuItem, MessageService } from '@wawjs/ngx-prime/api';
 import { BreadcrumbModule } from '@wawjs/ngx-prime/breadcrumb';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
+import { TranslateService } from '@wawjs/ngx-translate';
 import { AgentViewComponent } from '../../../components/agent/agent-view/agent-view.component';
 import { Agent } from '../../../agent/agent.interface';
 import { agents } from '../../../agent/agent.data';
 
 @Component({
-	imports: [AgentViewComponent, BreadcrumbModule, CardModule],
+	imports: [AgentViewComponent, BreadcrumbModule, CardModule, ButtonModule],
 	templateUrl: './agent.component.html',
 	styleUrl: './agent.component.scss',
 })
 export class AgentComponent {
 	private readonly _route = inject(ActivatedRoute);
+	private readonly _messageService = inject(MessageService);
+	readonly translateService = inject(TranslateService);
 
 	private readonly _id = toSignal(
 		this._route.paramMap.pipe(map((params) => params.get('id'))),
@@ -28,4 +32,14 @@ export class AgentComponent {
 
 	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
 	readonly breadcrumb: MenuItem[] = [{ label: 'Агент' }];
+
+	share(): void {
+		const url = `${window.location.origin}/agent/${this._id()}`;
+		navigator.clipboard?.writeText(url).then(() => {
+			this._messageService.add({
+				severity: 'success',
+				detail: this.translateService.translate('Посилання скопійовано')(),
+			});
+		});
+	}
 }

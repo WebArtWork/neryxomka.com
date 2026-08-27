@@ -8,6 +8,7 @@ import { CardModule } from '@wawjs/ngx-prime/card';
 import { ListingViewComponent } from '../../../components/listing/listing-view/listing-view.component';
 import { Listing } from '../../../listing/listing.interface';
 import { listings } from '../../../listing/listing.data';
+import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
 
 @Component({
 	imports: [ListingViewComponent, BreadcrumbModule, CardModule],
@@ -25,6 +26,11 @@ export class ListingComponent {
 	readonly entity = computed<Listing | undefined>(() =>
 		listings.find((item) => item._id === this._id()),
 	);
+
+	readonly relations = computed<ListingRelations | null>(() => {
+		const listing = this.entity();
+		return listing ? relationsForListing(listing) : null;
+	});
 
 	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
 	readonly breadcrumb: MenuItem[] = [{ label: 'Оголошення' }];

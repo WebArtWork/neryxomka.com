@@ -1,13 +1,35 @@
 <article class="card">
+	@if (property) {
+		<div class="card__list-item" (click)="viewProperty()">
+			<app-property-short [entity]="property" />
+		</div>
+	}
+
 	<h2 class="card__title">{{ entity.title }}</h2>
 
 	<div class="card__meta">
-		<span class="card__badge">{{ entity.listingType }}</span>
-		<span class="card__badge">{{ entity.status }}</span>
+		<span class="card__badge">{{ typeLabels[entity.listingType] }}</span>
+		<span class="card__badge">{{ statusLabels[entity.status] }}</span>
 		@if (entity.sourceVerified) {
-			<span class="card__badge">verified</span>
+			<span class="card__badge">Перевірено</span>
 		}
 	</div>
+
+	@if (agent || agency || developer || complex) {
+		<div class="card__meta">
+			@if (agent) {
+				<button type="button" class="card__relation" (click)="viewAgent()"><app-agent-icon [entity]="agent" /></button>
+			}
+			@if (agency) {
+				<button type="button" class="card__relation" (click)="viewAgency()"><app-agency-icon [entity]="agency" /></button>
+			} @else if (developer) {
+				<button type="button" class="card__relation" (click)="viewDeveloper()"><app-developer-icon [entity]="developer" /></button>
+			}
+			@if (complex) {
+				<button type="button" class="card__relation" (click)="viewComplex()"><app-complex-icon [entity]="complex" /></button>
+			}
+		</div>
+	}
 
 	@if (entity.photos.length) {
 		<div class="card__photos">
@@ -19,19 +41,19 @@
 
 	<p>{{ entity.description }}</p>
 
-		<div class="card__row"><dt>Price</dt><dd>{{ entity.price }} {{ entity.currency }}</dd></div>
-		<div class="card__row"><dt>Location</dt><dd>{{ entity.publicLocation }}</dd></div>
-		<div class="card__row"><dt>Available from</dt><dd>{{ entity.availableFrom }}</dd></div>
-		<div class="card__row"><dt>Owner</dt><dd>{{ entity.owner.role }}: {{ entity.owner.userId }}</dd></div>
-		<div class="card__row"><dt>Published</dt><dd>{{ entity.publicationDate }}</dd></div>
+		<div class="card__row"><dt>Ціна</dt><dd>{{ entity.price }} {{ entity.currency }}</dd></div>
+		<div class="card__row"><dt>Розташування</dt><dd>{{ entity.publicLocation }}</dd></div>
+		<div class="card__row"><dt>Доступно з</dt><dd>{{ entity.availableFrom }}</dd></div>
+		<div class="card__row"><dt>Власник</dt><dd>{{ entity.owner.role }}: {{ entity.owner.userId }}</dd></div>
+		<div class="card__row"><dt>Опубліковано</dt><dd>{{ entity.publicationDate }}</dd></div>
 		@if (entity.rentalPeriod) {
-			<div class="card__row"><dt>Rental period</dt><dd>{{ entity.rentalPeriod }}</dd></div>
+			<div class="card__row"><dt>Період оренди</dt><dd>{{ entity.rentalPeriod }}</dd></div>
 		}
 		@if (entity.availableTo) {
-			<div class="card__row"><dt>Available to</dt><dd>{{ entity.availableTo }}</dd></div>
+			<div class="card__row"><dt>Доступно до</dt><dd>{{ entity.availableTo }}</dd></div>
 		}
 		@if (entity.expirationDate) {
-			<div class="card__row"><dt>Expires</dt><dd>{{ entity.expirationDate }}</dd></div>
+			<div class="card__row"><dt>Термін дії до</dt><dd>{{ entity.expirationDate }}</dd></div>
 		}
 
 	@if (entity.contactOptions.length) {

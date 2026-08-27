@@ -2,7 +2,15 @@
 	<p-breadcrumb [model]="breadcrumb" [home]="home" class="listing__breadcrumb" />
 
 	@if (entity(); as item) {
-	<app-listing-view [entity]="item" />
+	@let rel = relations();
+	<app-listing-view
+		[entity]="item"
+		[property]="rel?.property"
+		[complex]="rel?.complex"
+		[developer]="rel?.developer"
+		[agency]="rel?.agency"
+		[agent]="rel?.agent"
+	/>
 	} @else {
 	<p-card class="listing__not-found">
 		<p>Оголошення не знайдено.</p>

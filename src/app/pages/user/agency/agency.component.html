@@ -2,6 +2,12 @@
 	<p-breadcrumb [model]="breadcrumb" [home]="home" class="agency__breadcrumb" />
 
 	@if (entity(); as item) {
+	<div class="agency__actions">
+		<button pButton type="button" severity="secondary" size="small" (click)="share()">
+			<i class="pi pi-share-alt"></i>
+			{{ translateService.translate('Поділитися')() }}
+		</button>
+	</div>
 	<app-agency-view [entity]="item" />
 	} @else {
 	<p-card class="agency__not-found">

@@ -2,7 +2,17 @@
 	<p-breadcrumb [model]="breadcrumb" [home]="home" class="property__breadcrumb" />
 
 	@if (entity(); as item) {
-	<app-property-view [entity]="item" />
+	@let rel = relations();
+	<app-property-view
+		[entity]="item"
+		[complex]="rel?.complex"
+		[developer]="rel?.developer"
+		[agency]="rel?.agency"
+		[agent]="rel?.agent"
+		[listings]="rel?.listings ?? []"
+		[records]="rel?.records ?? []"
+		[comments]="rel?.comments ?? []"
+	/>
 	} @else {
 	<p-card class="property__not-found">
 		<p>Об'єкт нерухомості не знайдено.</p>

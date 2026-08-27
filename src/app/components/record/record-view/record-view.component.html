@@ -1,37 +1,48 @@
 <article class="card">
+	@if (property) {
+		<div class="card__list-item" (click)="viewProperty()">
+			<app-property-short [entity]="property" />
+		</div>
+	}
+
 	<h2 class="card__title">{{ entity.title }}</h2>
 
 	<div class="card__meta">
-		<span class="card__badge">{{ entity.recordType }}</span>
-		<span class="card__badge">{{ entity.status }}</span>
-		<span class="card__badge">{{ entity.visibility }}</span>
+		<span class="card__badge">{{ typeLabels[entity.recordType] }}</span>
+		<span class="card__badge">{{ statusLabels[entity.status] }}</span>
+		<span class="card__badge">{{ visibilityLabels[entity.visibility] }}</span>
 		@if (entity.verified) {
-			<span class="card__badge">verified</span>
+			<span class="card__badge">Перевірено</span>
 		}
 	</div>
 
 	<p>{{ entity.description }}</p>
 
-		<div class="card__row"><dt>Event date</dt><dd>{{ entity.eventDate }}</dd></div>
-		<div class="card__row"><dt>Created</dt><dd>{{ entity.creationDate }}</dd></div>
-		<div class="card__row"><dt>Author</dt><dd>{{ entity.authorUserId }}</dd></div>
+		<div class="card__row"><dt>Дата події</dt><dd>{{ entity.eventDate }}</dd></div>
+		<div class="card__row"><dt>Створено</dt><dd>{{ entity.creationDate }}</dd></div>
+		@if (author) {
+			<div class="card__row">
+				<dt>Автор</dt>
+				<dd><button type="button" class="card__relation" (click)="viewUser(author)"><app-user-icon [entity]="author" /></button></dd>
+			</div>
+		}
 		@if (entity.serviceProvider) {
-			<div class="card__row"><dt>Service provider</dt><dd>{{ entity.serviceProvider }}</dd></div>
+			<div class="card__row"><dt>Постачальник послуг</dt><dd>{{ entity.serviceProvider }}</dd></div>
 		}
 		@if (entity.cost !== null) {
-			<div class="card__row"><dt>Cost</dt><dd>{{ entity.cost }} {{ entity.currency }}</dd></div>
+			<div class="card__row"><dt>Вартість</dt><dd>{{ entity.cost }} {{ entity.currency }}</dd></div>
 		}
 		@if (entity.quantity !== null) {
-			<div class="card__row"><dt>Quantity</dt><dd>{{ entity.quantity }} {{ entity.units }}</dd></div>
+			<div class="card__row"><dt>Кількість</dt><dd>{{ entity.quantity }} {{ entity.units }}</dd></div>
 		}
 		@if (entity.locationInsideProperty) {
-			<div class="card__row"><dt>Location inside property</dt><dd>{{ entity.locationInsideProperty }}</dd></div>
+			<div class="card__row"><dt>Розташування в об'єкті</dt><dd>{{ entity.locationInsideProperty }}</dd></div>
 		}
 
-	@if (entity.involvedUserIds.length) {
+	@if (involvedUsers.length) {
 		<div class="card__meta">
-			@for (id of entity.involvedUserIds; track id) {
-				<span class="card__badge">{{ id }}</span>
+			@for (user of involvedUsers; track user._id) {
+				<button type="button" class="card__relation" (click)="viewUser(user)"><app-user-icon [entity]="user" /></button>
 			}
 		</div>
 	}

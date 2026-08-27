@@ -55,3 +55,34 @@
 	text-transform: capitalize;
 	border: 1px solid var(--c-border);
 }
+
+.card__section-title {
+	font-size: 0.9rem;
+	font-weight: 600;
+	color: var(--c-text-secondary);
+	margin: 0;
+}
+
+.card__list {
+	display: flex;
+	flex-direction: column;
+	gap: var(--sp-2);
+}
+
+.card__list-item {
+	display: block;
+	width: 100%;
+	padding: 0;
+	background: none;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+}
+
+.card__relation {
+	display: inline-flex;
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+}

@@ -8,6 +8,7 @@ import { CardModule } from '@wawjs/ngx-prime/card';
 import { PropertyViewComponent } from '../../../components/property/property-view/property-view.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
+import { PropertyRelations, relationsForProperty } from '../../../property/property-relations';
 
 @Component({
 	imports: [PropertyViewComponent, BreadcrumbModule, CardModule],
@@ -25,6 +26,11 @@ export class PropertyComponent {
 	readonly entity = computed<Property | undefined>(() =>
 		properties.find((item) => item._id === this._id()),
 	);
+
+	readonly relations = computed<PropertyRelations | null>(() => {
+		const property = this.entity();
+		return property ? relationsForProperty(property) : null;
+	});
 
 	readonly home: MenuItem = { icon: 'pi pi-home', routerLink: '/explore' };
 	readonly breadcrumb: MenuItem[] = [{ label: 'Об’єкт нерухомості' }];
