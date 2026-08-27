@@ -6,16 +6,14 @@
 	 * the topbar, mobile bottom nav, and — critically — the sidebar's grid
 	 * column on desktop (see user.component.scss's `grid-template-columns: 1fr
 	 * var(--drawer-w)`). Position: fixed against the viewport ignored all of
-	 * that and let the feed render underneath/behind the sidebar. Absolute +
-	 * negative margin (canceling .user__main's own padding) keeps the same
-	 * full-bleed look while staying confined to that parent's content area.
+	 * that and let the feed render underneath/behind the sidebar.
+	 *
+	 * `absolute; inset: 0` on its own already aligns to .user__main's padding
+	 * box (i.e. it already bypasses that parent's own padding) — no extra
+	 * negative margin needed. Adding one pushed this element further out,
+	 * overflowing .user__main's box and triggering its own scrollbar.
 	 */
 	@apply absolute inset-0 z-10 overflow-hidden bg-black;
-	margin: calc(-1 * var(--sp-4));
-
-	@media (min-width: 768px) {
-		margin: calc(-1 * var(--sp-5));
-	}
 }
 
 .feed__scroll {
