@@ -1,5 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter, map, startWith } from 'rxjs';
 import { FooterComponent } from '../footer/footer.component';
 import { MobileNavComponent } from '../mobile-nav/mobile-nav.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -13,4 +15,15 @@ import { TopbarComponent } from '../topbar/topbar.component';
 })
 export class UserComponent {
 	readonly sidebar = inject(SidebarService);
+	private readonly _router = inject(Router);
+
+	/** Footer only appears on the landing page, not on every other page. */
+	readonly isLandingPage = toSignal(
+		this._router.events.pipe(
+			filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+			map((event) => event.urlAfterRedirects === '/'),
+			startWith(this._router.url === '/'),
+		),
+		{ initialValue: false },
+	);
 }

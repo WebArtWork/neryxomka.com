@@ -1,11 +1,11 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { MultiSelectModule } from '@wawjs/ngx-prime/multiselect';
 import { SelectModule } from '@wawjs/ngx-prime/select';
-import { SliderModule } from '@wawjs/ngx-prime/slider';
 import { ListingShortComponent } from '../../../components/listing/listing-short/listing-short.component';
 import { Listing, ListingStatus, ListingType } from '../../../listing/listing.interface';
 import { listings } from '../../../listing/listing.data';
@@ -59,11 +59,12 @@ const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
 	imports: [
 		ListingShortComponent,
 		FormsModule,
+		RouterLink,
+		ButtonModule,
 		CardModule,
 		InputTextModule,
 		SelectModule,
 		MultiSelectModule,
-		SliderModule,
 	],
 	templateUrl: './explore.component.html',
 	styleUrl: './explore.component.scss',
@@ -87,24 +88,16 @@ export class ExploreComponent {
 		LISTING_STATUS_LABELS,
 	).map(([value, label]) => ({ value: value as ListingStatus, label }));
 
-	readonly minPrice = 0;
-	readonly maxPrice = computed(() => {
-		const max = listings.reduce((acc, item) => Math.max(acc, item.price), 0);
-		return Math.ceil(max / 1000) * 1000 || 1000;
-	});
-
 	readonly searchTerm = signal('');
 	readonly selectedPropertyTypes = signal<PropertyType[]>([]);
 	readonly selectedListingType = signal<ListingType | null>(null);
 	readonly selectedStatus = signal<ListingStatus | null>(null);
-	readonly priceRange = signal<[number, number]>([0, 1_000_000]);
 
 	readonly results = computed<Listing[]>(() => {
 		const term = this.searchTerm().trim().toLowerCase();
 		const types = this.selectedPropertyTypes();
 		const listingType = this.selectedListingType();
 		const status = this.selectedStatus();
-		const [minPrice, maxPrice] = this.priceRange();
 
 		return listings.filter((item) => {
 			const property = this._propertyById.get(item.propertyId);
@@ -136,23 +129,11 @@ export class ExploreComponent {
 				return false;
 			}
 
-			if (item.price < minPrice || item.price > maxPrice) {
-				return false;
-			}
-
 			return true;
 		});
 	});
 
 	view(item: Listing): void {
 		this._router.navigate(['/listing', item._id]);
-	}
-
-	resetFilters(): void {
-		this.searchTerm.set('');
-		this.selectedPropertyTypes.set([]);
-		this.selectedListingType.set(null);
-		this.selectedStatus.set(null);
-		this.priceRange.set([0, this.maxPrice()]);
 	}
 }

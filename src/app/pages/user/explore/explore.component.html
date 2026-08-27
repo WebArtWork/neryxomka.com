@@ -1,106 +1,64 @@
-<section class="explore">
-	<header class="explore__header">
-		<h2 class="explore__title">Пошук</h2>
-		<span class="explore__hint">Знайдіть оголошення за адресою, типом нерухомості, форматом угоди та ціною</span>
-	</header>
+<div class="explore">
+	<div class="explore__header">
+		<h1 class="explore__title">Пошук</h1>
 
-	<p-card class="explore__filters">
-		<div class="explore__filters-grid">
-			<div class="explore__field explore__field--search">
-				<label for="explore-search">Пошук</label>
-				<input
-					id="explore-search"
-					pInputText
-					type="text"
-					placeholder="Адреса, місто або назва оголошення"
-					[fluid]="true"
-					[ngModel]="searchTerm()"
-					(ngModelChange)="searchTerm.set($event)"
-				/>
-			</div>
+		<input
+			pInputText
+			type="text"
+			placeholder="Адреса, місто або назва оголошення"
+			class="explore__search"
+			[ngModel]="searchTerm()"
+			(ngModelChange)="searchTerm.set($event)"
+		/>
 
-			<div class="explore__field">
-				<label for="explore-property-type">Тип нерухомості</label>
-				<p-multiSelect
-					id="explore-property-type"
-					appendTo="body"
-					scrollHeight="auto"
-					[options]="propertyTypeOptions"
-					optionLabel="label"
-					optionValue="value"
-					placeholder="Будь-який тип"
-					[fluid]="true"
-					[ngModel]="selectedPropertyTypes()"
-					(ngModelChange)="selectedPropertyTypes.set($event)"
-				/>
-			</div>
+		<p-multiSelect
+			appendTo="body"
+			scrollHeight="auto"
+			[options]="propertyTypeOptions"
+			optionLabel="label"
+			optionValue="value"
+			placeholder="Тип нерухомості"
+			class="explore__filter"
+			[ngModel]="selectedPropertyTypes()"
+			(ngModelChange)="selectedPropertyTypes.set($event)"
+		/>
 
-			<div class="explore__field">
-				<label for="explore-listing-type">Тип угоди</label>
-				<p-select
-					id="explore-listing-type"
-					appendTo="body"
-					scrollHeight="auto"
-					[options]="listingTypeOptions"
-					optionLabel="label"
-					optionValue="value"
-					placeholder="Будь-який"
-					[showClear]="true"
-					[fluid]="true"
-					[ngModel]="selectedListingType()"
-					(ngModelChange)="selectedListingType.set($event)"
-				/>
-			</div>
+		<p-select
+			appendTo="body"
+			scrollHeight="auto"
+			[options]="listingTypeOptions"
+			optionLabel="label"
+			optionValue="value"
+			placeholder="Тип угоди"
+			[showClear]="true"
+			class="explore__filter"
+			[ngModel]="selectedListingType()"
+			(ngModelChange)="selectedListingType.set($event)"
+		/>
 
-			<div class="explore__field">
-				<label for="explore-status">Статус</label>
-				<p-select
-					id="explore-status"
-					appendTo="body"
-					scrollHeight="auto"
-					[options]="listingStatusOptions"
-					optionLabel="label"
-					optionValue="value"
-					placeholder="Будь-який"
-					[showClear]="true"
-					[fluid]="true"
-					[ngModel]="selectedStatus()"
-					(ngModelChange)="selectedStatus.set($event)"
-				/>
-			</div>
+		<p-select
+			appendTo="body"
+			scrollHeight="auto"
+			[options]="listingStatusOptions"
+			optionLabel="label"
+			optionValue="value"
+			placeholder="Статус"
+			[showClear]="true"
+			class="explore__filter"
+			[ngModel]="selectedStatus()"
+			(ngModelChange)="selectedStatus.set($event)"
+		/>
 
-			<div class="explore__field explore__field--price">
-				<label>Ціна: {{ priceRange()[0] }} — {{ priceRange()[1] }}</label>
-				<p-slider
-					[range]="true"
-					[min]="minPrice"
-					[max]="maxPrice()"
-					[ngModel]="priceRange()"
-					(ngModelChange)="priceRange.set($event)"
-				/>
-			</div>
-		</div>
+		<a pButton routerLink="/map" severity="secondary" size="small" class="explore__map-link">Карта</a>
+	</div>
 
-		<div class="explore__filters-actions">
-			<button type="button" class="explore__reset" (click)="resetFilters()">Скинути фільтри</button>
-		</div>
-	</p-card>
-
-	<div class="explore__results">
-		<span class="explore__count">Знайдено оголошень: {{ results().length }}</span>
-
-		@if (results().length) {
-		<div class="explore__grid">
-			@for (item of results(); track item._id) {
-			<p-card class="explore__card" (click)="view(item)">
-				<app-listing-short [entity]="item" />
-			</p-card>
-			}
-		</div>
-		} @else {
-		<p-card class="explore__empty">
-			<p>За заданими критеріями оголошень не знайдено.</p>
+	<div class="explore__grid">
+		@for (item of results(); track item._id) {
+		<p-card class="explore__card" (click)="view(item)">
+			<app-listing-short [entity]="item" />
 		</p-card>
+		} @empty {
+		<p class="explore__empty">За заданими критеріями оголошень не знайдено.</p>
 		}
 	</div>
-</section>
+</div>
