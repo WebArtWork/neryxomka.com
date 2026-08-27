@@ -20,6 +20,11 @@ repo.
 - Keep project-specific form components registered through `src/app/app.formcomponents.ts`.
 - Use `LanguageService` / `TranslateService` from `@wawjs/ngx-translate` directly for language
   switching.
+- Prefer `@wawjs/ngx-prime` components/directives over plain HTML elements for anything interactive
+  or form-like (buttons, inputs, selects, textareas, dialogs, tables, etc.) — e.g. `pButton` instead
+  of `<button>`, `pInputText`/`p-inputnumber`/`pTextarea`/`p-select` instead of raw `<input>`/
+  `<select>`/`<textarea>`. Only fall back to plain markup when there is no reasonable ngx-prime
+  equivalent.
 
 ## Release Discipline
 
