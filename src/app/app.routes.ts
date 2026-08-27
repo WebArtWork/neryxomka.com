@@ -105,6 +105,19 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'map',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Карта',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/map/map.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'property/:id',
 				canActivate: [MetaGuard],
 				data: {
