@@ -1,11 +1,18 @@
 <article class="short">
 	@if (entity.photos.length) {
-		<img class="short__thumb" [src]="entity.photos[0]" alt="" />
+		<img class="short__thumb" [src]="entity.photos[0]" [alt]="entity.type" loading="lazy" />
 	}
 
 	<div class="short__body">
 		<h3 class="short__title">{{ entity.type }} · {{ entity.city }}</h3>
-		<span class="short__meta">{{ entity.address }}</span>
-		<span class="short__price">{{ entity.status }} · {{ entity.characteristics.sizeSqm }} m²</span>
+		<p class="short__address">{{ entity.address }}</p>
+
+		<div class="short__meta">
+			<span>{{ entity.status }}</span>
+			<span>{{ entity.characteristics.sizeSqm }} m²</span>
+			@if (entity.characteristics.rooms) {
+				<span>{{ entity.characteristics.rooms }} кімнат</span>
+			}
+		</div>
 	</div>
 </article>

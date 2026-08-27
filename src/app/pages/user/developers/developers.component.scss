@@ -39,11 +39,11 @@
 
 .developers__grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	grid-template-columns: 1fr;
 	gap: var(--sp-4);
 }
 
-.developers__card {
+.developers__row {
 	cursor: pointer;
 }
 

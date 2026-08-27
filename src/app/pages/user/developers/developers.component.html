@@ -22,18 +22,14 @@
 	<div class="developers__results">
 		<span class="developers__count">Знайдено забудовників: {{ results().length }}</span>
 
-		@if (results().length) {
 		<div class="developers__grid">
 			@for (item of results(); track item._id) {
-			<p-card class="developers__card" (click)="view(item)">
+			<div class="developers__row" (click)="view(item)">
 				<app-developer-short [entity]="item" />
-			</p-card>
+			</div>
+			} @empty {
+			<p class="developers__empty">За заданим запитом забудовників не знайдено.</p>
 			}
 		</div>
-		} @else {
-		<p-card class="developers__empty">
-			<p>За заданим запитом забудовників не знайдено.</p>
-		</p-card>
-		}
 	</div>
 </section>

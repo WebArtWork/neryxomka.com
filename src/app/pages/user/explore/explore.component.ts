@@ -2,7 +2,6 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
-import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { MultiSelectModule } from '@wawjs/ngx-prime/multiselect';
 import { SelectModule } from '@wawjs/ngx-prime/select';
@@ -61,7 +60,6 @@ const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
 		FormsModule,
 		RouterLink,
 		ButtonModule,
-		CardModule,
 		InputTextModule,
 		SelectModule,
 		MultiSelectModule,

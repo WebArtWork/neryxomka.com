@@ -22,18 +22,14 @@
 	<div class="agencies__results">
 		<span class="agencies__count">Знайдено агентств: {{ results().length }}</span>
 
-		@if (results().length) {
 		<div class="agencies__grid">
 			@for (item of results(); track item._id) {
-			<p-card class="agencies__card" (click)="view(item)">
+			<div class="agencies__row" (click)="view(item)">
 				<app-agency-short [entity]="item" />
-			</p-card>
+			</div>
+			} @empty {
+			<p class="agencies__empty">За заданим запитом агентств не знайдено.</p>
 			}
 		</div>
-		} @else {
-		<p-card class="agencies__empty">
-			<p>За заданим запитом агентств не знайдено.</p>
-		</p-card>
-		}
 	</div>
 </section>

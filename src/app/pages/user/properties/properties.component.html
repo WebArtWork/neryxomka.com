@@ -22,18 +22,14 @@
 	<div class="properties__results">
 		<span class="properties__count">Знайдено об’єктів: {{ results().length }}</span>
 
-		@if (results().length) {
 		<div class="properties__grid">
 			@for (item of results(); track item._id) {
-			<p-card class="properties__card" (click)="view(item)">
+			<div class="properties__row" (click)="view(item)">
 				<app-property-short [entity]="item" />
-			</p-card>
+			</div>
+			} @empty {
+			<p class="properties__empty">За заданим запитом об’єктів не знайдено.</p>
 			}
 		</div>
-		} @else {
-		<p-card class="properties__empty">
-			<p>За заданим запитом об’єктів не знайдено.</p>
-		</p-card>
-		}
 	</div>
 </section>

@@ -54,9 +54,9 @@
 
 	<div class="explore__grid">
 		@for (item of results(); track item._id) {
-		<p-card class="explore__card" (click)="view(item)">
+		<div class="explore__row" (click)="view(item)">
 			<app-listing-short [entity]="item" />
-		</p-card>
+		</div>
 		} @empty {
 		<p class="explore__empty">За заданими критеріями оголошень не знайдено.</p>
 		}
