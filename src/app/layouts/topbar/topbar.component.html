@@ -20,13 +20,6 @@
 				/>
 				}
 			</a>
-
-			<app-nav-icon
-				class="max-md:hidden"
-				[routerLink]="sidebarToggler() ? '/explore' : '/'"
-				[name]="viewport() === 'mobile' ? '' : sidebarToggler() ? translateService.translate('Explore')() : ''"
-				[icon]="sidebarToggler() ? 'th-large' : 'home'"
-			/>
 		</li>
 
 		<li
