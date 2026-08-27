@@ -81,6 +81,14 @@
 	@apply text-sm font-medium text-white/90;
 }
 
+.feed__relations {
+	@apply flex flex-wrap items-center gap-2;
+}
+
+.feed__relation {
+	@apply inline-flex cursor-pointer rounded-[var(--radius-pill,999px)] border-0 bg-transparent p-0;
+}
+
 .feed__sidebar {
 	@apply absolute bottom-4 right-3 z-10 flex flex-col items-center gap-5;
 }

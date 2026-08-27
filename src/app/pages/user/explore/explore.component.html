@@ -53,9 +53,16 @@
 	</div>
 
 	<div class="explore__grid">
-		@for (item of results(); track item._id) {
-		<div class="explore__row" (click)="view(item)">
-			<app-listing-short [entity]="item" />
+		@for (row of results(); track row.listing._id) {
+		<div class="explore__row" (click)="view(row.listing)">
+			<app-listing-short
+				[entity]="row.listing"
+				[agent]="row.relations.agent"
+				[agency]="row.relations.agency"
+				[developer]="row.relations.developer"
+				[complex]="row.relations.complex"
+				(relationClick)="viewRelation($event)"
+			/>
 		</div>
 		} @empty {
 		<p class="explore__empty">За заданими критеріями оголошень не знайдено.</p>

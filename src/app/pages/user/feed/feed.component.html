@@ -5,7 +5,8 @@
 
 	@if (items.length) {
 		<div class="feed__scroll">
-			@for (item of items; track item._id) {
+			@for (row of items; track row.listing._id) {
+				@let item = row.listing;
 				<section class="feed__section">
 					<img
 						class="feed__img"
@@ -37,6 +38,25 @@
 							<span class="feed__location-icon"><i class="pi pi-map-marker"></i></span>
 							<span class="feed__location-text">{{ item.publicLocation }}</span>
 						</div>
+
+						@if (row.relations.agent || row.relations.agency || row.relations.developer) {
+							<div class="feed__relations">
+								@if (row.relations.agent; as agent) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'agent', agent._id)">
+										<app-agent-icon [entity]="agent" />
+									</button>
+								}
+								@if (row.relations.agency; as agency) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'agency', agency._id)">
+										<app-agency-icon [entity]="agency" />
+									</button>
+								} @else if (row.relations.developer; as developer) {
+									<button type="button" class="feed__relation" (click)="viewRelation($event, 'developer', developer._id)">
+										<app-developer-icon [entity]="developer" />
+									</button>
+								}
+							</div>
+						}
 					</div>
 
 					<div class="feed__sidebar">
