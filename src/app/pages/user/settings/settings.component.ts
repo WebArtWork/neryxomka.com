@@ -54,6 +54,8 @@ export class SettingsComponent {
 		return SettingsComponent.LANGUAGE_FLAG_EMOJI[code] ?? '🌐';
 	}
 
+	readonly isAuthenticated = computed(() => !!this.userService.user()._id);
+
 	readonly isLanguageListOpen = signal(false);
 
 	readonly securityModel = signal<SecurityModel>({

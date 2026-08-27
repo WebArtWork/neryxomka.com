@@ -70,6 +70,32 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'editor',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Редактор',
+						description:
+							'Перевірте форми додавання об’єктів, оголошень, комплексів, агентств та агентів у Neryxomka.',
+						index: false,
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/editor/editor.routes').then(
+						(m) => m.routes,
+					),
+			},
+		],
+	},
+	{
+		// Publicly browsable pages — accessible whether signed in or not.
+		path: '',
+		loadComponent: () =>
+			import('./layouts/user/user.component').then(
+				(m) => m.UserComponent,
+			),
+		children: [
+			{
 				path: 'settings',
 				canActivate: [MetaGuard],
 				data: {
@@ -126,22 +152,6 @@ export const routes: Routes = [
 				},
 				loadChildren: () =>
 					import('./pages/user/map/map.routes').then(
-						(m) => m.routes,
-					),
-			},
-			{
-				path: 'editor',
-				canActivate: [MetaGuard],
-				data: {
-					meta: {
-						title: 'Редактор',
-						description:
-							'Перевірте форми додавання об’єктів, оголошень, комплексів, агентств та агентів у Neryxomka.',
-						index: false,
-					},
-				},
-				loadChildren: () =>
-					import('./pages/user/editor/editor.routes').then(
 						(m) => m.routes,
 					),
 			},
