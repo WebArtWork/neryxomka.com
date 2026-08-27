@@ -6,12 +6,7 @@ import {
 	output,
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import {
-	ActivatedRoute,
-	NavigationEnd,
-	Router,
-	RouterLink,
-} from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { CoreService } from '@wawjs/ngx-core';
 import { TranslateService } from '@wawjs/ngx-translate';
 import { filter, map, startWith } from 'rxjs';
@@ -38,7 +33,6 @@ export class TopbarComponent {
 	private readonly _coreService = inject(CoreService);
 	private readonly _sidebarService = inject(SidebarService);
 	private readonly _router = inject(Router);
-	private readonly _route = inject(ActivatedRoute);
 	readonly translateService = inject(TranslateService);
 
 	readonly company = companyProfile;
@@ -100,9 +94,9 @@ export class TopbarComponent {
 
 	/** Walks to the deepest activated route snapshot and reads its `meta.title`. */
 	private _readDeepestRouteTitle(): string {
-		let route = this._route.root;
-		while (route.firstChild) route = route.firstChild;
+		let snapshot = this._router.routerState.snapshot.root;
+		while (snapshot.firstChild) snapshot = snapshot.firstChild;
 
-		return route.snapshot.data['meta']?.title ?? '';
+		return snapshot.data['meta']?.title ?? '';
 	}
 }
