@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { Property } from '../../../property/property.interface';
 
-const DEFAULT_PHOTO = '/property-default.svg';
+const DEFAULT_PHOTO = '/property-default.png';
 
 @Component({
 	selector: 'app-property-short',

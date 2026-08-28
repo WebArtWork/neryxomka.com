@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Agency } from '../../../agency/agency.interface';
@@ -23,7 +23,7 @@ import { ListingShortComponent } from '../../listing/listing-short/listing-short
 import { RecordShortComponent } from '../../record/record-short/record-short.component';
 import { CommentShortComponent } from '../../comment/comment-short/comment-short.component';
 
-const DEFAULT_PHOTO = '/property-default.svg';
+const DEFAULT_PHOTO = '/property-default.png';
 
 @Component({
 	selector: 'app-property-view',
@@ -41,8 +41,9 @@ const DEFAULT_PHOTO = '/property-default.svg';
 	templateUrl: './property-view.component.html',
 	styleUrl: './property-view.component.scss',
 })
-export class PropertyViewComponent {
+export class PropertyViewComponent implements OnChanges {
 	private readonly _router = inject(Router);
+	private readonly _failedPhotos = new Set<string>();
 
 	@Input() entity!: Property;
 	@Input() complex?: Complex | null;
@@ -59,11 +60,18 @@ export class PropertyViewComponent {
 	readonly visibilityLabels = PROPERTY_VISIBILITY_LABELS;
 
 	get photos(): string[] {
-		return this.entity.photos.length ? this.entity.photos : [DEFAULT_PHOTO];
+		const uniquePhotos = [...new Set(this.entity.photos)];
+		if (!uniquePhotos.length) return [DEFAULT_PHOTO];
+		return uniquePhotos.every((photo) => this._failedPhotos.has(photo)) ? [DEFAULT_PHOTO] : uniquePhotos;
 	}
 
-	onPhotoError(event: Event): void {
+	onPhotoError(event: Event, photo: string): void {
+		this._failedPhotos.add(photo);
 		(event.target as HTMLImageElement).src = DEFAULT_PHOTO;
+	}
+
+	ngOnChanges(changes: SimpleChanges): void {
+		if (changes['entity']) this._failedPhotos.clear();
 	}
 
 	viewComplex(): void {
@@ -71,7 +79,8 @@ export class PropertyViewComponent {
 	}
 
 	viewDeveloper(): void {
-		if (this.developer) this._router.navigate(['/developer', this.developer._id]);
+		if (this.developer)
+			this._router.navigate(['/developer', this.developer._id]);
 	}
 
 	viewAgency(): void {

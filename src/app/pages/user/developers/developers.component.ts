@@ -1,14 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { DeveloperShortComponent } from '../../../components/developer/developer-short/developer-short.component';
 import { Developer } from '../../../developer/developer.interface';
 import { developers } from '../../../developer/developer.data';
 
 @Component({
-	imports: [DeveloperShortComponent, FormsModule, CardModule, InputTextModule],
+	imports: [DeveloperShortComponent, FormsModule, InputTextModule],
 	templateUrl: './developers.component.html',
 	styleUrl: './developers.component.scss',
 })

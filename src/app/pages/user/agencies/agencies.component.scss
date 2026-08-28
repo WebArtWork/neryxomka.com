@@ -4,37 +4,21 @@
 	gap: var(--sp-4);
 }
 
-.agencies__header {
+.agencies__filters {
 	display: flex;
-	flex-direction: column;
-	gap: var(--sp-1);
+	align-items: center;
+	gap: var(--sp-2);
 }
 
-.agencies__title {
-	margin: 0;
-	color: var(--c-text-secondary);
-}
-
-.agencies__hint {
-	font-size: 0.85rem;
-	color: var(--c-text-muted);
-}
-
-.agencies__field {
-	display: flex;
-	flex-direction: column;
-	gap: var(--sp-1);
+.agencies__search {
+	flex: 0 0 auto;
+	width: 200px;
 }
 
 .agencies__results {
 	display: flex;
 	flex-direction: column;
 	gap: var(--sp-3);
-}
-
-.agencies__count {
-	font-size: 0.85rem;
-	color: var(--c-text-muted);
 }
 
 .agencies__grid {

@@ -1,14 +1,13 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CardModule } from '@wawjs/ngx-prime/card';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { AgencyShortComponent } from '../../../components/agency/agency-short/agency-short.component';
 import { Agency } from '../../../agency/agency.interface';
 import { agencies } from '../../../agency/agency.data';
 
 @Component({
-	imports: [AgencyShortComponent, FormsModule, CardModule, InputTextModule],
+	imports: [AgencyShortComponent, FormsModule, InputTextModule],
 	templateUrl: './agencies.component.html',
 	styleUrl: './agencies.component.scss',
 })

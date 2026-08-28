@@ -6,16 +6,24 @@ import { AgentIconComponent } from '../../../components/agent/agent-icon/agent-i
 import { DeveloperIconComponent } from '../../../components/developer/developer-icon/developer-icon.component';
 import { Listing } from '../../../listing/listing.interface';
 import { listings } from '../../../listing/listing.data';
-import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
+import {
+	ListingRelations,
+	relationsForListing,
+} from '../../../listing/listing-relations';
 import { ListingRelationType } from '../../../components/listing/listing-short/listing-short.component';
 
 type FeedAction = 'favourite' | 'ignore';
 
 /** Fallback image shown when a listing has no photos or its photo fails to load. */
-const DEFAULT_PHOTO = '/property-default.svg';
+const DEFAULT_PHOTO = '/property-default.png';
 
 @Component({
-	imports: [ButtonModule, AgentIconComponent, AgencyIconComponent, DeveloperIconComponent],
+	imports: [
+		ButtonModule,
+		AgentIconComponent,
+		AgencyIconComponent,
+		DeveloperIconComponent,
+	],
 	templateUrl: './feed.component.html',
 	styleUrl: './feed.component.scss',
 })
@@ -25,12 +33,19 @@ export class FeedComponent {
 	readonly favouritedIds = signal<Set<string>>(this._restore('favourited'));
 	readonly ignoredIds = signal<Set<string>>(this._restore('ignored'));
 
-	readonly feed = computed<{ listing: Listing; relations: ListingRelations }[]>(() => {
+	readonly feed = computed<
+		{ listing: Listing; relations: ListingRelations }[]
+	>(() => {
 		const favourited = this.favouritedIds();
 		const ignored = this.ignoredIds();
 		return listings
-			.filter((item) => !favourited.has(item._id) && !ignored.has(item._id))
-			.map((listing) => ({ listing, relations: relationsForListing(listing) }));
+			.filter(
+				(item) => !favourited.has(item._id) && !ignored.has(item._id),
+			)
+			.map((listing) => ({
+				listing,
+				relations: relationsForListing(listing),
+			}));
 	});
 
 	/** Navigates to the listing's detail page. */
