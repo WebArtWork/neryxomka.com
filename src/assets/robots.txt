@@ -3,4 +3,4 @@ Allow: /$
 Allow: /sign$
 Disallow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://neryxomka.com/sitemap.xml
