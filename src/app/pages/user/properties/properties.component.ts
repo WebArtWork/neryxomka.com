@@ -3,17 +3,19 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { PropertyShortComponent } from '../../../components/property/property-short/property-short.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
 
 @Component({
-	imports: [PropertyShortComponent, FormsModule, RouterLink, ButtonModule, InputTextModule],
+	imports: [PropertyShortComponent, FormsModule, RouterLink, ButtonModule, InputTextModule, TranslateDirective],
 	templateUrl: './properties.component.html',
 	styleUrl: './properties.component.scss',
 })
 export class PropertiesComponent {
 	private readonly _router = inject(Router);
+	readonly translateService = inject(TranslateService);
 
 	readonly searchTerm = signal('');
 

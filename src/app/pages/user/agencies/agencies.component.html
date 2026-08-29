@@ -4,7 +4,7 @@
 			id="agencies-search"
 			pInputText
 			type="text"
-			placeholder="Назва, місто або країна"
+			[placeholder]="translateService.translate('Назва, місто або країна')()"
 			class="agencies__search"
 			[ngModel]="searchTerm()"
 			(ngModelChange)="searchTerm.set($event)"
@@ -18,7 +18,7 @@
 				<app-agency-short [entity]="item" />
 			</div>
 			} @empty {
-			<p class="agencies__empty">За заданим запитом агентств не знайдено.</p>
+			<p class="agencies__empty" translate>За заданим запитом агентств не знайдено.</p>
 			}
 		</div>
 	</div>

@@ -11,6 +11,7 @@ import { DeveloperFormComponent } from '../../../components/developer/developer-
 import { ListingFormComponent } from '../../../components/listing/listing-form/listing-form.component';
 import { PropertyFormComponent } from '../../../components/property/property-form/property-form.component';
 import { RecordFormComponent } from '../../../components/record/record-form/record-form.component';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 type EntityType =
 	| 'property'
@@ -39,12 +40,14 @@ interface EntityOption {
 		DeveloperFormComponent,
 		AgencyFormComponent,
 		AgentFormComponent,
+		TranslateDirective,
 	],
 	templateUrl: './editor.component.html',
 	styleUrl: './editor.component.scss',
 })
 export class EditorComponent {
 	private readonly _messageService = inject(MessageService);
+	readonly translateService = inject(TranslateService);
 
 	readonly options: EntityOption[] = [
 		{ label: 'Об’єкт', value: 'property' },
@@ -99,14 +102,14 @@ export class EditorComponent {
 		if (form.valid) {
 			this._messageService.add({
 				severity: 'success',
-				summary: 'Форма валідна',
-				detail: 'Дані пройшли валідацію. Це демо-режим — нічого не збережено.',
+				summary: this.translateService.translate('Форма валідна')(),
+				detail: this.translateService.translate('Дані пройшли валідацію. Це демо-режим — нічого не збережено.')(),
 			});
 		} else {
 			this._messageService.add({
 				severity: 'error',
-				summary: 'Форма містить помилки',
-				detail: 'Перевірте позначені поля та спробуйте ще раз.',
+				summary: this.translateService.translate('Форма містить помилки')(),
+				detail: this.translateService.translate('Перевірте позначені поля та спробуйте ще раз.')(),
 			});
 		}
 	}

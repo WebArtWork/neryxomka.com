@@ -3,12 +3,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { UserViewComponent } from '../../../components/user/user-view/user-view.component';
 import { User } from '../../../user/user.interface';
 import { users } from '../../../user/user.data';
 
 @Component({
-	imports: [UserViewComponent, CardModule],
+	imports: [UserViewComponent, CardModule, TranslateDirective],
 	templateUrl: './client.component.html',
 	styleUrl: './client.component.scss',
 })

@@ -11,6 +11,7 @@ import {
 	relationsForListing,
 } from '../../../listing/listing-relations';
 import { ListingRelationType } from '../../../components/listing/listing-short/listing-short.component';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 
 type FeedAction = 'favourite' | 'ignore';
 
@@ -23,6 +24,7 @@ const DEFAULT_PHOTO = '/property-default.png';
 		AgentIconComponent,
 		AgencyIconComponent,
 		DeveloperIconComponent,
+		TranslateDirective,
 	],
 	templateUrl: './feed.component.html',
 	styleUrl: './feed.component.scss',

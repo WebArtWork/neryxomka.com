@@ -10,6 +10,7 @@ import { Listing, ListingStatus, ListingType } from '../../../listing/listing.in
 import { listings } from '../../../listing/listing.data';
 import { ListingRelations, propertyForListing, relationsForListing } from '../../../listing/listing-relations';
 import { PropertyType } from '../../../property/property.interface';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 interface SelectOption<T> {
 	label: string;
@@ -63,12 +64,14 @@ const LISTING_STATUS_LABELS: Record<ListingStatus, string> = {
 		InputTextModule,
 		SelectModule,
 		MultiSelectModule,
+		TranslateDirective,
 	],
 	templateUrl: './explore.component.html',
 	styleUrl: './explore.component.scss',
 })
 export class ExploreComponent {
 	private readonly _router = inject(Router);
+	readonly translateService = inject(TranslateService);
 
 	readonly propertyTypeOptions: SelectOption<PropertyType>[] = Object.entries(
 		PROPERTY_TYPE_LABELS,

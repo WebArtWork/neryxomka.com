@@ -2,17 +2,19 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { AgencyShortComponent } from '../../../components/agency/agency-short/agency-short.component';
 import { Agency } from '../../../agency/agency.interface';
 import { agencies } from '../../../agency/agency.data';
 
 @Component({
-	imports: [AgencyShortComponent, FormsModule, InputTextModule],
+	imports: [AgencyShortComponent, FormsModule, InputTextModule, TranslateDirective],
 	templateUrl: './agencies.component.html',
 	styleUrl: './agencies.component.scss',
 })
 export class AgenciesComponent {
 	private readonly _router = inject(Router);
+	readonly translateService = inject(TranslateService);
 
 	readonly searchTerm = signal('');
 

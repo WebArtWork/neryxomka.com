@@ -3,13 +3,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { PropertyViewComponent } from '../../../components/property/property-view/property-view.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
 import { PropertyRelations, relationsForProperty } from '../../../property/property-relations';
 
 @Component({
-	imports: [PropertyViewComponent, CardModule],
+	imports: [PropertyViewComponent, CardModule, TranslateDirective],
 	templateUrl: './property.component.html',
 	styleUrl: './property.component.scss',
 })

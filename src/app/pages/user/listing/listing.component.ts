@@ -3,13 +3,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { ListingViewComponent } from '../../../components/listing/listing-view/listing-view.component';
 import { Listing } from '../../../listing/listing.interface';
 import { listings } from '../../../listing/listing.data';
 import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
 
 @Component({
-	imports: [ListingViewComponent, CardModule],
+	imports: [ListingViewComponent, CardModule, TranslateDirective],
 	templateUrl: './listing.component.html',
 	styleUrl: './listing.component.scss',
 })

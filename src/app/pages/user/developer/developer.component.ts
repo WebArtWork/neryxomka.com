@@ -5,13 +5,13 @@ import { map } from 'rxjs';
 import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { TranslateService } from '@wawjs/ngx-translate';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { DeveloperViewComponent } from '../../../components/developer/developer-view/developer-view.component';
 import { Developer } from '../../../developer/developer.interface';
 import { developers } from '../../../developer/developer.data';
 
 @Component({
-	imports: [DeveloperViewComponent, CardModule, ButtonModule],
+	imports: [DeveloperViewComponent, CardModule, ButtonModule, TranslateDirective],
 	templateUrl: './developer.component.html',
 	styleUrl: './developer.component.scss',
 })

@@ -5,13 +5,13 @@ import { map } from 'rxjs';
 import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { TranslateService } from '@wawjs/ngx-translate';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { AgencyViewComponent } from '../../../components/agency/agency-view/agency-view.component';
 import { Agency } from '../../../agency/agency.interface';
 import { agencies } from '../../../agency/agency.data';
 
 @Component({
-	imports: [AgencyViewComponent, CardModule, ButtonModule],
+	imports: [AgencyViewComponent, CardModule, ButtonModule, TranslateDirective],
 	templateUrl: './agency.component.html',
 	styleUrl: './agency.component.scss',
 })

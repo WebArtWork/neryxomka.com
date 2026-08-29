@@ -6,6 +6,7 @@ import { PropertyShortComponent } from '../../../components/property/property-sh
 import { LeafletMapComponent, LeafletMapMarker } from '../../../shared/leaflet-map/leaflet-map.component';
 import { Property } from '../../../property/property.interface';
 import { properties } from '../../../property/property.data';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 type MapCategory = 'properties' | 'agencies' | 'developers';
 
@@ -20,13 +21,14 @@ type MapCategory = 'properties' | 'agencies' | 'developers';
  * needs no API key at all.
  */
 @Component({
-	imports: [ButtonModule, CardModule, PropertyShortComponent, LeafletMapComponent],
+	imports: [ButtonModule, CardModule, PropertyShortComponent, LeafletMapComponent, TranslateDirective],
 	templateUrl: './map.component.html',
 	styleUrl: './map.component.scss',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MapComponent {
 	private readonly _router = inject(Router);
+	readonly translateService = inject(TranslateService);
 
 	readonly categories: { value: MapCategory; label: string }[] = [
 		{ value: 'properties', label: 'Об’єкти' },

@@ -4,13 +4,13 @@
 			id="properties-search"
 			pInputText
 			type="text"
-			placeholder="Адреса, місто або країна"
+			[placeholder]="translateService.translate('Адреса, місто або країна')()"
 			class="properties__search"
 			[ngModel]="searchTerm()"
 			(ngModelChange)="searchTerm.set($event)"
 		/>
 
-		<a pButton routerLink="/map" severity="secondary" size="small" class="properties__map-link">
+		<a pButton routerLink="/map" severity="secondary" size="small" class="properties__map-link" translate>
 			Мапа
 		</a>
 	</div>
@@ -22,7 +22,7 @@
 				<app-property-short [entity]="item" />
 			</div>
 			} @empty {
-			<p class="properties__empty">За заданим запитом об’єктів не знайдено.</p>
+			<p class="properties__empty" translate>За заданим запитом об’єктів не знайдено.</p>
 			}
 		</div>
 	</div>

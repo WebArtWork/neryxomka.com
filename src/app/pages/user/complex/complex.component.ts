@@ -3,12 +3,13 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { ComplexViewComponent } from '../../../components/complex/complex-view/complex-view.component';
 import { Complex } from '../../../complex/complex.interface';
 import { complexes } from '../../../complex/complex.data';
 
 @Component({
-	imports: [ComplexViewComponent, CardModule],
+	imports: [ComplexViewComponent, CardModule, TranslateDirective],
 	templateUrl: './complex.component.html',
 	styleUrl: './complex.component.scss',
 })

@@ -2,17 +2,19 @@ import { Component, computed, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { DeveloperShortComponent } from '../../../components/developer/developer-short/developer-short.component';
 import { Developer } from '../../../developer/developer.interface';
 import { developers } from '../../../developer/developer.data';
 
 @Component({
-	imports: [DeveloperShortComponent, FormsModule, InputTextModule],
+	imports: [DeveloperShortComponent, FormsModule, InputTextModule, TranslateDirective],
 	templateUrl: './developers.component.html',
 	styleUrl: './developers.component.scss',
 })
 export class DevelopersComponent {
 	private readonly _router = inject(Router);
+	readonly translateService = inject(TranslateService);
 
 	readonly searchTerm = signal('');
 
