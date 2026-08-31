@@ -4,7 +4,7 @@ import { UserService } from '@wawjs/ngx-bos';
 import { MessageService } from '@wawjs/ngx-prime/api';
 import { ToastModule } from '@wawjs/ngx-prime/toast';
 import { SessionBridgeService } from './features/auth/session-bridge.service';
-import { ThemeState } from './theme/theme-state';
+import { ThemeState } from './theme/app.theme';
 
 @Component({
 	imports: [RouterOutlet, ToastModule],

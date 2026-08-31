@@ -24,7 +24,7 @@ import { PasswordModule } from '@wawjs/ngx-prime/password';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { SessionBridgeService } from '../../../features/auth/session-bridge.service';
 import { FieldErrorComponent } from '../../../shared/field-error/field-error.component';
-import { ThemeState } from '../../../theme/theme-state';
+import { ThemeState } from '../../../theme/app.theme';
 import { RespStatus, SignModel } from './sign.interface';
 
 const signSchema = schema<SignModel>((path) => {
