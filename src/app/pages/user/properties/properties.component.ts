@@ -4,9 +4,9 @@ import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { PropertyShortComponent } from '../../../components/property/property-short/property-short.component';
-import { Property } from '../../../property/property.interface';
-import { properties } from '../../../property/property.data';
+import { PropertyShortComponent } from '../../../features/property/property-short/property-short.component';
+import { Property } from '../../../features/property/property.interface';
+import { properties } from '../../../features/property/property.data';
 
 @Component({
 	imports: [PropertyShortComponent, FormsModule, RouterLink, ButtonModule, InputTextModule, TranslateDirective],

@@ -6,9 +6,9 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { DeveloperViewComponent } from '../../../components/developer/developer-view/developer-view.component';
-import { Developer } from '../../../developer/developer.interface';
-import { developers } from '../../../developer/developer.data';
+import { DeveloperViewComponent } from '../../../features/developer/developer-view/developer-view.component';
+import { Developer } from '../../../features/developer/developer.interface';
+import { developers } from '../../../features/developer/developer.data';
 
 @Component({
 	imports: [DeveloperViewComponent, CardModule, ButtonModule, TranslateDirective],

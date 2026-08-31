@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { environment } from '@env';
 import { HttpService } from '@wawjs/ngx-http';
 import { Observable, from, switchMap } from 'rxjs';
 import { FeedbackSubmission } from './feedback.interface';
@@ -8,7 +9,10 @@ export class FeedbackService {
 	private readonly _httpService = inject(HttpService);
 
 	submit(payload: FeedbackSubmission): Observable<unknown> {
-		return this._httpService.post('/api/companydevelopmentfeedback/create', payload);
+		return this._httpService.post('/api/companydevelopmentfeedback/create', {
+			...payload,
+			domain: environment.contact.slug,
+		});
 	}
 
 	uploadFile(file: File): Observable<{ url: string }> {

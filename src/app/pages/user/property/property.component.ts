@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { PropertyViewComponent } from '../../../components/property/property-view/property-view.component';
-import { Property } from '../../../property/property.interface';
-import { properties } from '../../../property/property.data';
-import { PropertyRelations, relationsForProperty } from '../../../property/property-relations';
+import { PropertyViewComponent } from '../../../features/property/property-view/property-view.component';
+import { Property } from '../../../features/property/property.interface';
+import { properties } from '../../../features/property/property.data';
+import { PropertyRelations, relationsForProperty } from '../../../features/property/property-relations';
 
 @Component({
 	imports: [PropertyViewComponent, CardModule, TranslateDirective],

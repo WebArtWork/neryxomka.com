@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { AgencyShortComponent } from '../../../components/agency/agency-short/agency-short.component';
-import { Agency } from '../../../agency/agency.interface';
-import { agencies } from '../../../agency/agency.data';
+import { AgencyShortComponent } from '../../../features/agency/agency-short/agency-short.component';
+import { Agency } from '../../../features/agency/agency.interface';
+import { agencies } from '../../../features/agency/agency.data';
 
 @Component({
 	imports: [AgencyShortComponent, FormsModule, InputTextModule, TranslateDirective],

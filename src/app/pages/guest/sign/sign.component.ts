@@ -22,7 +22,7 @@ import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { PasswordModule } from '@wawjs/ngx-prime/password';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { SessionBridgeService } from '../../../auth/session-bridge.service';
+import { SessionBridgeService } from '../../../features/auth/session-bridge.service';
 import { FieldErrorComponent } from '../../../shared/field-error/field-error.component';
 import { ThemeState } from '../../../theme/theme-state';
 import { RespStatus, SignModel } from './sign.interface';

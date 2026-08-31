@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
-import { PropertyShortComponent } from '../../../components/property/property-short/property-short.component';
+import { PropertyShortComponent } from '../../../features/property/property-short/property-short.component';
 import { LeafletMapComponent, LeafletMapMarker } from '../../../shared/leaflet-map/leaflet-map.component';
-import { Property } from '../../../property/property.interface';
-import { properties } from '../../../property/property.data';
+import { Property } from '../../../features/property/property.interface';
+import { properties } from '../../../features/property/property.data';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 type MapCategory = 'properties' | 'agencies' | 'developers';

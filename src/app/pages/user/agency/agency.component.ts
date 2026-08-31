@@ -6,9 +6,9 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { AgencyViewComponent } from '../../../components/agency/agency-view/agency-view.component';
-import { Agency } from '../../../agency/agency.interface';
-import { agencies } from '../../../agency/agency.data';
+import { AgencyViewComponent } from '../../../features/agency/agency-view/agency-view.component';
+import { Agency } from '../../../features/agency/agency.interface';
+import { agencies } from '../../../features/agency/agency.data';
 
 @Component({
 	imports: [AgencyViewComponent, CardModule, ButtonModule, TranslateDirective],

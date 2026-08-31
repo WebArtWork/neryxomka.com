@@ -1,16 +1,16 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
-import { AgencyIconComponent } from '../../../components/agency/agency-icon/agency-icon.component';
-import { AgentIconComponent } from '../../../components/agent/agent-icon/agent-icon.component';
-import { DeveloperIconComponent } from '../../../components/developer/developer-icon/developer-icon.component';
-import { Listing } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
+import { AgencyIconComponent } from '../../../features/agency/agency-icon/agency-icon.component';
+import { AgentIconComponent } from '../../../features/agent/agent-icon/agent-icon.component';
+import { DeveloperIconComponent } from '../../../features/developer/developer-icon/developer-icon.component';
+import { Listing } from '../../../features/listing/listing.interface';
+import { listings } from '../../../features/listing/listing.data';
 import {
 	ListingRelations,
 	relationsForListing,
-} from '../../../listing/listing-relations';
-import { ListingRelationType } from '../../../components/listing/listing-short/listing-short.component';
+} from '../../../features/listing/listing-relations';
+import { ListingRelationType } from '../../../features/listing/listing-short/listing-short.component';
 import { TranslateDirective } from '@wawjs/ngx-translate';
 
 type FeedAction = 'favourite' | 'ignore';

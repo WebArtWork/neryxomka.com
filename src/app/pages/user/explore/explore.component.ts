@@ -5,11 +5,11 @@ import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { MultiSelectModule } from '@wawjs/ngx-prime/multiselect';
 import { SelectModule } from '@wawjs/ngx-prime/select';
-import { ListingRelationType, ListingShortComponent } from '../../../components/listing/listing-short/listing-short.component';
-import { Listing, ListingStatus, ListingType } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
-import { ListingRelations, propertyForListing, relationsForListing } from '../../../listing/listing-relations';
-import { PropertyType } from '../../../property/property.interface';
+import { ListingRelationType, ListingShortComponent } from '../../../features/listing/listing-short/listing-short.component';
+import { Listing, ListingStatus, ListingType } from '../../../features/listing/listing.interface';
+import { listings } from '../../../features/listing/listing.data';
+import { ListingRelations, propertyForListing, relationsForListing } from '../../../features/listing/listing-relations';
+import { PropertyType } from '../../../features/property/property.interface';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 interface SelectOption<T> {

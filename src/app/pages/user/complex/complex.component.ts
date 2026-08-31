@@ -4,9 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { ComplexViewComponent } from '../../../components/complex/complex-view/complex-view.component';
-import { Complex } from '../../../complex/complex.interface';
-import { complexes } from '../../../complex/complex.data';
+import { ComplexViewComponent } from '../../../features/complex/complex-view/complex-view.component';
+import { Complex } from '../../../features/complex/complex.interface';
+import { complexes } from '../../../features/complex/complex.data';
 
 @Component({
 	imports: [ComplexViewComponent, CardModule, TranslateDirective],

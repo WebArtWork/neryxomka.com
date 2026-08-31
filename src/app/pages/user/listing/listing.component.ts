@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective } from '@wawjs/ngx-translate';
-import { ListingViewComponent } from '../../../components/listing/listing-view/listing-view.component';
-import { Listing } from '../../../listing/listing.interface';
-import { listings } from '../../../listing/listing.data';
-import { ListingRelations, relationsForListing } from '../../../listing/listing-relations';
+import { ListingViewComponent } from '../../../features/listing/listing-view/listing-view.component';
+import { Listing } from '../../../features/listing/listing.interface';
+import { listings } from '../../../features/listing/listing.data';
+import { ListingRelations, relationsForListing } from '../../../features/listing/listing-relations';
 
 @Component({
 	imports: [ListingViewComponent, CardModule, TranslateDirective],

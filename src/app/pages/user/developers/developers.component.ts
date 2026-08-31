@@ -3,9 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InputTextModule } from '@wawjs/ngx-prime/inputtext';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
-import { DeveloperShortComponent } from '../../../components/developer/developer-short/developer-short.component';
-import { Developer } from '../../../developer/developer.interface';
-import { developers } from '../../../developer/developer.data';
+import { DeveloperShortComponent } from '../../../features/developer/developer-short/developer-short.component';
+import { Developer } from '../../../features/developer/developer.interface';
+import { developers } from '../../../features/developer/developer.data';
 
 @Component({
 	imports: [DeveloperShortComponent, FormsModule, InputTextModule, TranslateDirective],

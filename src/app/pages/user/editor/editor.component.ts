@@ -4,13 +4,13 @@ import { MessageService } from '@wawjs/ngx-prime/api';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { SelectButtonModule } from '@wawjs/ngx-prime/selectbutton';
-import { AgencyFormComponent } from '../../../components/agency/agency-form/agency-form.component';
-import { AgentFormComponent } from '../../../components/agent/agent-form/agent-form.component';
-import { ComplexFormComponent } from '../../../components/complex/complex-form/complex-form.component';
-import { DeveloperFormComponent } from '../../../components/developer/developer-form/developer-form.component';
-import { ListingFormComponent } from '../../../components/listing/listing-form/listing-form.component';
-import { PropertyFormComponent } from '../../../components/property/property-form/property-form.component';
-import { RecordFormComponent } from '../../../components/record/record-form/record-form.component';
+import { AgencyFormComponent } from '../../../features/agency/agency-form/agency-form.component';
+import { AgentFormComponent } from '../../../features/agent/agent-form/agent-form.component';
+import { ComplexFormComponent } from '../../../features/complex/complex-form/complex-form.component';
+import { DeveloperFormComponent } from '../../../features/developer/developer-form/developer-form.component';
+import { ListingFormComponent } from '../../../features/listing/listing-form/listing-form.component';
+import { PropertyFormComponent } from '../../../features/property/property-form/property-form.component';
+import { RecordFormComponent } from '../../../features/record/record-form/record-form.component';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 
 type EntityType =

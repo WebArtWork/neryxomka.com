@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { UserService } from '@wawjs/ngx-bos';
 import { MessageService } from '@wawjs/ngx-prime/api';
 import { ToastModule } from '@wawjs/ngx-prime/toast';
-import { SessionBridgeService } from './auth/session-bridge.service';
+import { SessionBridgeService } from './features/auth/session-bridge.service';
 import { ThemeState } from './theme/theme-state';
 
 @Component({
