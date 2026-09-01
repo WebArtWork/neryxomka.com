@@ -20,7 +20,27 @@ import { provideNgxSocket } from '@wawjs/ngx-socket';
 import { provideNgxTinymce } from '@wawjs/ngx-tinymce';
 import { provideTranslate } from '@wawjs/ngx-translate';
 import { provideNgxPrime } from '@wawjs/ngx-prime/config';
+import { definePreset } from '@wawjs/css-prime-styled';
 import Aura from '@wawjs/css-prime-themes/aura';
+
+/** Neryxomka brand blue, matched to the logo's house/passport color. */
+const NeryxomkaPreset = definePreset(Aura, {
+	semantic: {
+		primary: {
+			50: '#eef4fd',
+			100: '#d6e6fa',
+			200: '#adcdf5',
+			300: '#7cabee',
+			400: '#4a86e4',
+			500: '#2563d6',
+			600: '#1a4cb0',
+			700: '#163f8f',
+			800: '#163875',
+			900: '#163062',
+			950: '#0d1c3a',
+		},
+	},
+});
 import { NgxBosConfig, ngxBosProvide } from '@wawjs/ngx-bos';
 import { io } from 'socket.io-client';
 import { environment } from '@env';
@@ -73,7 +93,7 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideNgxPrime({
 			theme: {
-				preset: Aura,
+				preset: NeryxomkaPreset,
 				options: { darkModeSelector: "[data-mode='dark']" },
 			},
 		}),

@@ -23,6 +23,9 @@ out of scope for this phase).
 - **Developer** — the company behind a complex.
 - **Agency** / **Agent** — the businesses and individuals who represent
   properties and listings.
+- **Property Owner** — manages their own properties, publishes sale or rental
+  listings directly, maintains the property's digital passport, and can work
+  with agents or clients directly or bring an agent in later.
 - **Request** — a buyer's or tenant's stated need, for matching against
   listings.
 - **Comment** — reviews/feedback on a property, listing, agency, agent, or

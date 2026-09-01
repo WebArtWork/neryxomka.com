@@ -213,6 +213,20 @@ export const routes: Routes = [
 					),
 			},
 			{
+				path: 'for-property-owners',
+				canActivate: [MetaGuard],
+				data: {
+					meta: {
+						title: 'Для власників нерухомості',
+						description: 'Керуйте своєю нерухомістю, публікуйте оголошення та ведіть цифровий паспорт об’єкта на Neryxomka.',
+					},
+				},
+				loadChildren: () =>
+					import('./pages/user/for-property-owners/for-property-owners.routes').then(
+						(m) => m.routes,
+					),
+			},
+			{
 				path: 'feed',
 				canActivate: [MetaGuard],
 				data: {

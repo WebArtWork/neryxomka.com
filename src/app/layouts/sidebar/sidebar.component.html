@@ -149,6 +149,15 @@
 
 	<app-nav-icon
 		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Для власників нерухомості')() : ''"
+		[ariaLabel]="translateService.translate('Для власників нерухомості')()"
+		(click)="closeIfOverlay()"
+		routerLink="/for-property-owners"
+		icon="home"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
 		[name]="showNames() ? translateService.translate('Feedback')() : ''"
 		[ariaLabel]="translateService.translate('Feedback')()"
 		(click)="closeIfOverlay()"
