@@ -19,7 +19,7 @@ import {
 } from '@wawjs/ngx-translate';
 import { FieldErrorComponent } from '../../../shared/field-error/field-error.component';
 import { languageFlagUrl } from '../../../shared/language-flags/language-flags';
-import { ThemeState } from '../../../theme/theme-state';
+import { ThemeState } from '../../../theme/app.theme';
 import { SecurityModel } from './settings.interface';
 import { securitySchema } from './settings.schema';
 
