@@ -1,0 +1,1 @@
+var e=[{path:``,loadComponent:()=>import(`./chunk-BGTrtIpp.js`).then(o=>o.ForDevelopersPageComponent)}];export{e as routes};

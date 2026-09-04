@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DYWb94bo.js`).then(o=>o.ForPropertyOwnersPageComponent)}];export{t as routes};

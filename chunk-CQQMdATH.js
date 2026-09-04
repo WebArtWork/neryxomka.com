@@ -1,0 +1,1 @@
+var e=[{path:``,loadComponent:()=>import(`./chunk-CMY8r1KS2.js`).then(o=>o.DevelopersComponent)}];export{e as routes};

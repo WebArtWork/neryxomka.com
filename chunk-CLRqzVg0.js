@@ -1,0 +1,1 @@
+var e=[{path:``,loadComponent:()=>import(`./chunk-WmrxhPS32.js`).then(o=>o.ForAgenciesPageComponent)}];export{e as routes};

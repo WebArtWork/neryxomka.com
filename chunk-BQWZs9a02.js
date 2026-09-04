@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-CV3dQDlD2.js`).then(o=>o.ForAgentsPageComponent)}];export{t as routes};

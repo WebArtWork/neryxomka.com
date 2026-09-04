@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-DmvbwDRE2.js`).then(o=>o.AgencyComponent)}];export{t as routes};
