@@ -93,10 +93,10 @@
 			(ngModelChange)="setLanguage($event)"
 			[ariaLabel]="translateService.translate('Switch language')()"
 		>
-			<ng-template #selectedItem let-code>
+			<ng-template #selectedItem let-selected>
 				<span class="settings__language-value">
-					<img class="settings__flag" [src]="languageFlagUrl(code)" alt="" aria-hidden="true" />
-					<span [translate]="languageService.getLanguage(code)?.name ?? ''"></span>
+					<img class="settings__flag" [src]="languageFlagUrl(selected.code)" alt="" aria-hidden="true" />
+					<span [translate]="selected.name ?? ''"></span>
 				</span>
 			</ng-template>
 			<ng-template #item let-language>
