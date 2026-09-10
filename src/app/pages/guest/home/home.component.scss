@@ -36,36 +36,64 @@
 	}
 }
 
-.home__hero-glow {
+.home__eyebrow-dot {
+	width: 7px;
+	height: 7px;
+	background: var(--c-primary);
+	display: inline-block;
+}
+
+.home__hero-visual {
+	aspect-ratio: 4 / 3;
+
+	@media (min-width: 1024px) {
+		aspect-ratio: 1 / 1.05;
+	}
+}
+
+.home__hero-image {
+	box-shadow: var(--shadow-md);
+}
+
+.home__hero-label {
+	background: color-mix(in srgb, var(--c-bg-tertiary) 92%, transparent);
+	padding: var(--sp-2) var(--sp-3);
+	border-radius: var(--radius);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--c-text-secondary);
+}
+
+.home__passport-preview {
+	background: var(--c-bg-tertiary);
+	border-radius: var(--radius-card);
+	padding: var(--sp-5) var(--sp-6);
+	box-shadow: var(--shadow-md);
+	color: var(--c-text-secondary);
+	margin-inline: var(--sp-4);
+}
+
+.home__document-icon {
+	background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+	color: var(--c-primary);
+	border-radius: var(--radius);
+	width: 42px;
+	height: 46px;
+	display: grid;
+	place-items: center;
+	font-size: 1.3rem;
+	flex-shrink: 0;
+}
+
+.home__history-row:not(:last-child)::after {
+	content: '';
+	width: 1px;
+	background: var(--c-border);
 	position: absolute;
-	inset: 0;
-	z-index: 0;
-	pointer-events: none;
-	background-image: radial-gradient(
-			45rem 20rem at 15% 0%,
-			color-mix(in srgb, var(--c-primary) 18%, transparent),
-			transparent 70%
-		),
-		radial-gradient(
-			35rem 18rem at 85% 10%,
-			color-mix(in srgb, var(--c-secondary) 16%, transparent),
-			transparent 70%
-		);
-}
-
-.home__hero-image img {
-	filter: drop-shadow(0 20px 40px color-mix(in srgb, var(--c-primary) 20%, transparent));
-	animation: home-float 6s ease-in-out infinite;
-}
-
-@keyframes home-float {
-	0%,
-	100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-12px);
-	}
+	top: 56px;
+	left: 17px;
+	bottom: -20px;
 }
 
 .home__feature-card {
@@ -76,6 +104,23 @@
 
 	&:hover {
 		transform: translateY(-4px);
-		box-shadow: 0 12px 24px color-mix(in srgb, var(--c-text-primary) 10%, transparent);
+		box-shadow: var(--shadow-md);
 	}
+}
+
+.home__audience-row:hover h3,
+.home__audience-row:hover i {
+	color: var(--c-primary);
+}
+
+.home__text-link:hover {
+	color: var(--c-primary);
+}
+
+.home__cta-panel {
+	background: linear-gradient(
+		135deg,
+		var(--c-primary) 0%,
+		var(--c-primary-hover) 100%
+	);
 }
