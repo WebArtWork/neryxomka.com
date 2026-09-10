@@ -1,3 +1,81 @@
+:host {
+	display: block;
+	margin: calc(-1 * var(--sp-4)) calc(-1 * var(--sp-4)) 0;
+
+	@media (min-width: 768px) {
+		margin: calc(-1 * var(--sp-5)) calc(-1 * var(--sp-5)) 0;
+	}
+}
+
+.home-reveal {
+	animation-duration: 0.6s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: both;
+
+	&--slow {
+		animation-duration: 0.8s;
+	}
+
+	&--slower {
+		animation-duration: 1s;
+	}
+
+	&.home-reveal--in {
+		animation-name: home-reveal-in;
+	}
+}
+
+@keyframes home-reveal-in {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.home__hero-glow {
+	position: absolute;
+	inset: 0;
+	z-index: 0;
+	pointer-events: none;
+	background-image: radial-gradient(
+			45rem 20rem at 15% 0%,
+			color-mix(in srgb, var(--c-primary) 18%, transparent),
+			transparent 70%
+		),
+		radial-gradient(
+			35rem 18rem at 85% 10%,
+			color-mix(in srgb, var(--c-secondary) 16%, transparent),
+			transparent 70%
+		);
+}
+
+.home__hero-image img {
+	filter: drop-shadow(0 20px 40px color-mix(in srgb, var(--c-primary) 20%, transparent));
+	animation: home-float 6s ease-in-out infinite;
+}
+
+@keyframes home-float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+}
+
 .home__feature-card {
 	height: 100%;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease;
+
+	&:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 12px 24px color-mix(in srgb, var(--c-text-primary) 10%, transparent);
+	}
 }

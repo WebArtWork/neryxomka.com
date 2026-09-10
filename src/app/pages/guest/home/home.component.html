@@ -1,49 +1,79 @@
-<div class="home min-h-dvh bg-[var(--c-bg-primary)]">
-	<section
-		class="home__hero flex flex-col items-center justify-center gap-6 px-6 py-16 text-center"
-	>
-		<h1
-			class="m-0 max-w-3xl text-4xl font-bold text-[var(--c-text-primary)] md:text-5xl"
-		>
-			{{ company.name }}
-		</h1>
+<div class="home min-h-dvh overflow-hidden bg-[var(--c-bg-primary)]">
+	<section class="home__hero relative px-6 py-16 md:px-10">
+		<div class="home__hero-glow" aria-hidden="true"></div>
 
-		<p
-			class="m-0 max-w-2xl text-lg text-[var(--c-text-secondary)] md:text-xl"
+		<div
+			class="relative mx-auto flex max-w-6xl flex-col items-center gap-10 lg:flex-row lg:items-center lg:justify-between lg:text-left"
 		>
-			{{ company.description }}
-		</p>
-
-		<p class="m-0 max-w-2xl text-base text-[var(--c-text-muted)]">
-			<span translate
-				>Кожен об’єкт нерухомості отримує цифровий паспорт: повну
-				історію ремонтів, обслуговування та комунікацій — не лише
-				оголошення, а прозоре походження об’єкта.</span
+			<div
+				class="flex flex-col items-center gap-6 text-center lg:items-start lg:text-left home-reveal home-reveal--slow"
+				pAnimateOnScroll
+				enterClass="home-reveal--in"
 			>
-		</p>
+				<h1
+					class="m-0 max-w-3xl text-4xl font-bold text-[var(--c-text-primary)] md:text-5xl"
+				>
+					{{ company.name }}
+				</h1>
 
-		<div class="flex flex-wrap items-center justify-center gap-3 pt-2">
-			<a pButton [outlined]="true" routerLink="/for-users">
-				<span translate>Для покупців</span>
-			</a>
-			<a pButton [outlined]="true" routerLink="/for-property-owners">
-				<span translate>Для власників</span>
-			</a>
-			<a pButton [outlined]="true" routerLink="/for-agents">
-				<span translate>Для агентів</span>
-			</a>
-			<a pButton [outlined]="true" routerLink="/for-agencies">
-				<span translate>Для агенцій</span>
-			</a>
-			<a pButton [outlined]="true" routerLink="/for-developers">
-				<span translate>Для забудовників</span>
-			</a>
+				<p
+					class="m-0 max-w-2xl text-lg text-[var(--c-text-secondary)] md:text-xl"
+				>
+					{{ company.description }}
+				</p>
+
+				<p class="m-0 max-w-2xl text-base text-[var(--c-text-muted)]">
+					<span translate
+						>Кожен об’єкт нерухомості отримує цифровий паспорт:
+						повну історію ремонтів, обслуговування та комунікацій —
+						не лише оголошення, а прозоре походження об’єкта.</span
+					>
+				</p>
+
+				<div
+					class="flex flex-wrap items-center justify-center gap-3 pt-2 lg:justify-start"
+				>
+					<a pButton [outlined]="true" routerLink="/for-users">
+						<span translate>Для покупців</span>
+					</a>
+					<a
+						pButton
+						[outlined]="true"
+						routerLink="/for-property-owners"
+					>
+						<span translate>Для власників</span>
+					</a>
+					<a pButton [outlined]="true" routerLink="/for-agents">
+						<span translate>Для агентів</span>
+					</a>
+					<a pButton [outlined]="true" routerLink="/for-agencies">
+						<span translate>Для агенцій</span>
+					</a>
+					<a pButton [outlined]="true" routerLink="/for-developers">
+						<span translate>Для забудовників</span>
+					</a>
+				</div>
+			</div>
+
+			<div
+				class="home__hero-image shrink-0 home-reveal home-reveal--slower"
+				pAnimateOnScroll
+				enterClass="home-reveal--in"
+			>
+				<img
+					src="/hero-illustration.png"
+					alt=""
+					class="mx-auto w-64 md:w-80 lg:w-96"
+				/>
+			</div>
 		</div>
 	</section>
 
 	<section class="home__scenario px-6 pb-16 md:px-10">
 		<div
-			class="mx-auto grid max-w-5xl grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-[var(--c-border)] md:grid-cols-2"
+			class="mx-auto grid max-w-5xl grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-[var(--c-border)] md:grid-cols-2 home-reveal"
+			pAnimateOnScroll
+			enterClass="home-reveal--in"
 		>
 			<div class="flex flex-col gap-4 bg-[var(--c-bg-secondary)] p-8">
 				<span
@@ -77,7 +107,9 @@
 		</div>
 
 		<div
-			class="mx-auto mt-5 grid max-w-5xl grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-[var(--c-border)] md:grid-cols-2"
+			class="mx-auto mt-5 grid max-w-5xl grid-cols-1 gap-5 overflow-hidden rounded-2xl border border-[var(--c-border)] md:grid-cols-2 home-reveal home-reveal--slow"
+			pAnimateOnScroll
+			enterClass="home-reveal--in"
 		>
 			<div class="flex flex-col gap-4 bg-[var(--c-bg-secondary)] p-8">
 				<span
@@ -119,8 +151,13 @@
 		<div
 			class="mx-auto grid max-w-5xl grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"
 		>
-			@for (feature of features; track feature.title) {
-			<p-card class="home__feature-card">
+			@for (feature of features; track feature.title; let i = $index) {
+			<p-card
+				class="home__feature-card home-reveal"
+				pAnimateOnScroll
+				enterClass="home-reveal--in"
+				[style.animation-delay.ms]="i * 100"
+			>
 				<div class="flex flex-col items-start gap-3">
 					<i
 						class="{{ feature.icon }} text-2xl text-[var(--c-primary)]"

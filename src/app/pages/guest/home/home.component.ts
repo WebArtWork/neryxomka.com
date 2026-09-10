@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AnimateOnScrollModule } from '@wawjs/ngx-prime/animateonscroll';
 import { ButtonModule } from '@wawjs/ngx-prime/button';
 import { CardModule } from '@wawjs/ngx-prime/card';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
@@ -12,7 +13,13 @@ interface HomeFeature {
 }
 
 @Component({
-	imports: [RouterLink, ButtonModule, CardModule, TranslateDirective],
+	imports: [
+		RouterLink,
+		ButtonModule,
+		CardModule,
+		TranslateDirective,
+		AnimateOnScrollModule,
+	],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
 })
