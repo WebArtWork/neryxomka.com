@@ -1,7 +1,7 @@
 @if (isMobile()) {
 <button
 	type="button"
-	class="sidebar__backdrop fixed inset-x-0 top-0 bottom-[var(--topbar-h)]"
+	class="sidebar__backdrop fixed inset-x-0 top-[var(--topbar-h)] bottom-[var(--topbar-h)]"
 	[attr.aria-label]="translateService.translate('Menu')()"
 	(click)="closeBackdrop($event)"
 ></button>
@@ -12,7 +12,7 @@
 	[class.sidebar--min]="isMinimized()"
 	[style.width.px]="widthPx()"
 	[ngClass]="{
-		'fixed right-0 top-0 bottom-[var(--topbar-h)] h-[calc(100dvh-var(--topbar-h))]': isMobile(),
+		'fixed right-0 top-[var(--topbar-h)] bottom-[var(--topbar-h)] h-[calc(100dvh-2*var(--topbar-h))]': isMobile(),
 		'md:fixed md:right-0 md:top-14 md:h-[calc(100dvh-56px)]': isPreview(),
 		'md:sticky md:top-14 md:h-[calc(100dvh-56px)]': !isMobile() && !isPreview()
 	}"
@@ -50,6 +50,46 @@
 		routerLink="/share-profile"
 		icon="id-card"
 	/>
+
+	@if (isMobile()) {
+	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Properties')() : ''"
+		[ariaLabel]="translateService.translate('Properties')()"
+		(click)="closeIfOverlay()"
+		routerLink="/properties"
+		icon="building"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Agencies')() : ''"
+		[ariaLabel]="translateService.translate('Agencies')()"
+		(click)="closeIfOverlay()"
+		routerLink="/agencies"
+		icon="briefcase"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Developers')() : ''"
+		[ariaLabel]="translateService.translate('Developers')()"
+		(click)="closeIfOverlay()"
+		routerLink="/developers"
+		icon="users"
+	/>
+
+	<app-nav-icon
+		[class.sidebar--minimized-icon]="!showNames()"
+		[name]="showNames() ? translateService.translate('Feed')() : ''"
+		[ariaLabel]="translateService.translate('Feed')()"
+		(click)="closeIfOverlay()"
+		routerLink="/feed"
+		icon="images"
+	/>
+	}
 
 	<hr class="my-2 border-0 border-t-2 border-t-[var(--c-text-primary)]" />
 

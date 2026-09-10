@@ -23,50 +23,42 @@
 		</li>
 
 		<li
-			class="hidden max-md:inline-flex max-md:min-w-0 max-md:flex-1 max-md:items-center"
+			class="hidden max-md:pointer-events-none max-md:absolute max-md:inset-x-16 max-md:inline-flex max-md:min-w-0 max-md:items-center max-md:justify-center"
 		>
-			<span class="truncate text-base font-semibold">{{ pageTitle() }}</span>
+			<span class="truncate text-base font-semibold">{{ displayTitle() }}</span>
 		</li>
 
-		<li
-			class="inline-flex items-center max-md:hidden"
-		>
+		<li class="inline-flex items-center max-md:hidden">
 			<app-nav-icon
 				routerLink="/properties"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Properties')()"
+				[name]="translateService.translate('Properties')()"
 				[ariaLabel]="translateService.translate('Properties')()"
 				icon="building"
 			/>
 		</li>
 
-		<li
-			class="inline-flex items-center max-md:hidden"
-		>
+		<li class="inline-flex items-center max-md:hidden">
 			<app-nav-icon
 				routerLink="/agencies"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Agencies')()"
+				[name]="translateService.translate('Agencies')()"
 				[ariaLabel]="translateService.translate('Agencies')()"
 				icon="briefcase"
 			/>
 		</li>
 
-		<li
-			class="inline-flex items-center max-md:hidden"
-		>
+		<li class="inline-flex items-center max-md:hidden">
 			<app-nav-icon
 				routerLink="/developers"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Developers')()"
+				[name]="translateService.translate('Developers')()"
 				[ariaLabel]="translateService.translate('Developers')()"
 				icon="users"
 			/>
 		</li>
 
-		<li
-			class="inline-flex items-center max-md:hidden"
-		>
+		<li class="inline-flex items-center max-md:hidden">
 			<app-nav-icon
 				routerLink="/feed"
-				[name]="viewport() === 'mobile' ? '' : translateService.translate('Feed')()"
+				[name]="translateService.translate('Feed')()"
 				[ariaLabel]="translateService.translate('Feed')()"
 				icon="images"
 			/>
@@ -76,7 +68,7 @@
 
 		@if (sidebarToggler()) {
 		<li
-			class="inline-flex items-center max-md:flex-1 max-md:justify-center"
+			class="inline-flex items-center max-md:hidden"
 			(mouseleave)="onBurgerHover(false)"
 			(mouseenter)="onBurgerHover(true)"
 		>

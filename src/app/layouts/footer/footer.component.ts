@@ -31,7 +31,7 @@ export class FooterComponent {
 		{ label: 'Карта', icon: 'map', to: '/map' },
 		{ label: 'Об’єкти', icon: 'building', to: '/properties' },
 		{ label: 'Агентства', icon: 'briefcase', to: '/agencies' },
-		{ label: 'Забудовники', icon: 'building-columns', to: '/developers' },
+		{ label: 'Забудовники', icon: 'users', to: '/developers' },
 		{ label: 'Для користувачів', icon: 'home', to: '/for-users' },
 		{ label: 'Для агентів', icon: 'id-card', to: '/for-agents' },
 		{ label: 'Для забудовників', icon: 'building-columns', to: '/for-developers' },

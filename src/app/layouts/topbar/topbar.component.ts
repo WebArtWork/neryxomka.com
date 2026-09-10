@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
-import { CoreService } from '@wawjs/ngx-core';
 import { TranslateService } from '@wawjs/ngx-translate';
 import { filter, map, startWith } from 'rxjs';
 import { companyProfile } from '../../features/company/company.data';
@@ -30,7 +29,6 @@ const BURGER_ICONS: Record<BurgerState, string> = {
 	imports: [RouterLink, NavIconComponent],
 })
 export class TopbarComponent {
-	private readonly _coreService = inject(CoreService);
 	private readonly _sidebarService = inject(SidebarService);
 	private readonly _router = inject(Router);
 	readonly translateService = inject(TranslateService);
@@ -41,7 +39,6 @@ export class TopbarComponent {
 	readonly sidebarToggler = input(false);
 	readonly sidebarOpen = output<boolean>();
 	readonly showProfile = input(false);
-	readonly viewport = this._coreService.viewport;
 
 	/** Title of the deepest activated route, read from `data.meta.title` (used for the mobile header). */
 	readonly pageTitle = toSignal(
@@ -51,6 +48,20 @@ export class TopbarComponent {
 			startWith(this._readDeepestRouteTitle()),
 		),
 		{ initialValue: '' },
+	);
+
+	private readonly _isHome = toSignal(
+		this._router.events.pipe(
+			filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+			map((event) => event.urlAfterRedirects === '/'),
+			startWith(this._router.url === '/'),
+		),
+		{ initialValue: this._router.url === '/' },
+	);
+
+	/** Page title; the landing page and routes without their own title show the company name instead. */
+	readonly displayTitle = computed(() =>
+		this._isHome() ? this.company.name : this.pageTitle() || this.company.name,
 	);
 
 	readonly burgerState = computed<BurgerState>(() => {
