@@ -1,0 +1,1 @@
+var t=[{path:``,loadComponent:()=>import(`./chunk-BomCGLf0.js`).then(o=>o.ComplexComponent)}];export{t as routes};

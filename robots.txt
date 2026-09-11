@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /$
+Allow: /sign$
+Disallow: /
+
+Sitemap: https://neryxomka.com/sitemap.xml

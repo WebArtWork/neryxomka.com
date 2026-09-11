@@ -1,0 +1,1 @@
+var e=[{path:``,loadComponent:()=>import(`./chunk-v-Ryjp9G2.js`).then(o=>o.DeveloperComponent)}];export{e as routes};
